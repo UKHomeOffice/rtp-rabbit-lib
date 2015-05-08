@@ -1,6 +1,6 @@
-Rabbit - Scala
-==========
-General RabbitMQ functionality (written for Registered Traveller but reusable)
+Rabbit - Scala publish/subscribe for RabbitMQ
+=============================================
+Scala general functionality to interface with RabbitMQ (originally written for Registered Traveller UK)
 
 Project built with the following (main) technologies:
 
