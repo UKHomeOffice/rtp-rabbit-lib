@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="SBT: org.parboiled:parboiled-java:1.1.4:jar">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/typesafe-activator/1.3.2/libexec/repository/org.parboiled/parboiled-java/1.1.4/jars/parboiled-java.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
