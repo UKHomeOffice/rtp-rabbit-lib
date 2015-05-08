@@ -1,0 +1,29 @@
+[0m[[0minfo[0m] [0mPackaging /Users/benparker/development/scala/rabb-it/target/scala-2.11/rabb-it_2.11-1.0-SNAPSHOT-tests.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/RabbitSpec$WithRabbit.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/RabbitSpec$WithRabbit.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/WithConsumer$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/WithConsumer$$anon$1.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/RabbitSpec$WithRabbit$class.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/RabbitSpec$WithRabbit$class.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/WithConsumer$class.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/WithConsumer$class.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/RabbitSpec.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/RabbitSpec.class[0m
+[0m[[0mdebug[0m] [0m	uk[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/RabbitSpec$class.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/RabbitSpec$class.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/WithConsumer.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/WithConsumer.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/WithQueue.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/WithQueue.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq/WithQueue$class.class[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq/WithQueue$class.class[0m
+[0m[[0mdebug[0m] [0m	uk/gov/homeoffice/rabbitmq[0m
+[0m[[0mdebug[0m] [0m	  /Users/benparker/development/scala/rabb-it/target/scala-2.11/test-classes/uk/gov/homeoffice/rabbitmq[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m

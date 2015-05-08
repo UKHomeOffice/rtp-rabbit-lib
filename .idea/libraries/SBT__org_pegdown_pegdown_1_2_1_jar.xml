@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.pegdown:pegdown:1.2.1:jar">
+    <CLASSES>
+      <root url="jar:///usr/local/Cellar/typesafe-activator/1.3.2/libexec/repository/org.pegdown/pegdown/1.2.1/jars/pegdown.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

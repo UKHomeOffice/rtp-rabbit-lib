@@ -1,0 +1,179 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes
+compile options:
+0 items
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.10.4
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+14 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$1.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$10.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$11.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$12.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$2.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$3.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$4.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$5.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$6.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$7.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$8.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$9.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$.class
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build.class
+binary dependencies:
+8 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> /Users/benparker/.sbt/boot/scala-2.10.4/lib/scala-library.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+0 items
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+14 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$1
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$10
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$11
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$12
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$2
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$3
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$4
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$5
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$6
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$7
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$8
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build$$anonfun$root$9
+used names:
+39 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> %
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> %%
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> ++=
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> :=
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> <init>
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Append
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Build
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Defaults
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> FullInstance
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> InitializeInstance
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> IntegrationTest
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Keys
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Project
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> Seq
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> appendN
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> appendSeq
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> apply
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> at
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> collection
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> configs
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> file
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> itSettings
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> libraryDependencies
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> moduleIDConfigurable
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> name
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> organization
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> package
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> pure
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> resolvers
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> root
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> sbt
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> scalaVersion
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> scalacOptions
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> set
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> settings
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> toGroupID
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> toRepositoryName
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> version
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> withSources
+product stamps:
+14 items
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$1.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$10.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$11.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$12.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$2.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$3.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$4.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$5.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$6.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$7.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$8.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$$anonfun$root$9.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build$.class -> lastModified(1431084006000)
+/Users/benparker/development/scala/rabb-it/project/target/scala-2.10/sbt-0.13/classes/Build.class -> lastModified(1431084006000)
+source stamps:
+1 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> hash(0fa1e483ead9ce44981dbe594ee262906848c770)
+binary stamps:
+8 items
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar -> lastModified(1337313646000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar -> lastModified(1426867822000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar -> lastModified(1426867821000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar -> lastModified(1426867844000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar -> lastModified(1426867892000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar -> lastModified(1426867899000)
+/Users/benparker/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar -> lastModified(1426867907000)
+/Users/benparker/.sbt/boot/scala-2.10.4/lib/scala-library.jar -> lastModified(1395179187000)
+class names:
+8 items
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar -> java.lang.Object
+/Users/benparker/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar -> sbt.appmacro.Instance$
+/Users/benparker/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar -> sbt.LinePosition$
+/Users/benparker/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar -> sbt.impl.ModuleIDConfigurable
+/Users/benparker/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar -> sbt.std.InitializeInstance$
+/Users/benparker/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar -> sbt.Build
+/Users/benparker/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar -> sbt.package$
+/Users/benparker/.sbt/boot/scala-2.10.4/lib/scala-library.jar -> scala.collection.Seq$
+internal apis:
+1 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAE070IAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGnNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cFF9t5V0AAZub3RpZnlzcQB+AAwCLchIdAAEd2FpdHNxAH4ADM9w1/p0AA0kYXNJbnN0YW5jZU9mc3EAfgAMUG3VenQADGJ1aWxkTG9hZGVyc3NxAH4ADHae1Bx0AARyb290c3EAfgAMCjrfNnQABUJ1aWxkc3EAfgAMbuzLDXQABmVxdWFsc3NxAH4ADMYQ9+N0AAxhc0luc3RhbmNlT2ZzcQB+AAzXpniidAAScHJvamVjdERlZmluaXRpb25zc3EAfgAMrFyJa3QADHN5bmNocm9uaXplZHNxAH4ADAgnRWl0AA0kaXNJbnN0YW5jZU9mc3EAfgAMMGGQD3QACW5vdGlmeUFsbHNxAH4ADI0xqjZ0AAtyb290UHJvamVjdHNxAH4ADCNS2fx0AAxpc0luc3RhbmNlT2ZzcQB+AAwsj2MGdAACPT1zcQB+AAxjFl6zdAAFY2xvbmVzcQB+AAxmifuCdAAIdG9TdHJpbmdzcQB+AAx8dF5KdAACIT1zcQB+AAyL0ehQdAAIcHJvamVjdHNzcQB+AAxlWA5rdAAIZ2V0Q2xhc3NzcQB+AAyiiSqSdAACbmVzcQB+AAzkI+OedAACZXFzcQB+AAzv7f+bdAAIc2V0dGluZ3NzcQB+AAyfPjkQdAACIyNzcQB+AAy5kfGudAAIZmluYWxpemVzcQB+AAydk2WVdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBLeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAcQB+ABl1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHABc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHBzcQB+AGIBc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AEtMAAlpbmhlcml0ZWRxAH4AS0wAB3BhcmVudHNxAH4AS3hxAH4AaXNxAH4AYgF1cQB+AEYAAAAAcHNxAH4AYgF1cQB+AEYAAAAAcHNxAH4AYgF1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAA3NyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGh0AAVCdWlsZHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AaHNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAADc2J0c3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIJzcQB+AHV0AAZPYmplY3RzcQB+AHlzcQB+AHx1cQB+AH8AAAADc3EAfgCBdAAEamF2YXNxAH4AgXQABGxhbmdxAH4AhnNxAH4AdXQAA0FueXNxAH4AeXNxAH4AfHVxAH4AfwAAAAJzcQB+AIF0AAVzY2FsYXEAfgCGcHB1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTNA6fd1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABVL1VzZXJzL2JlbnBhcmtlci9kZXZlbG9wbWVudC9zY2FsYS9yYWJiLWl0L3Byb2plY3QvdGFyZ2V0L3NjYWxhLTIuMTAvc2J0LTAuMTMvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFA+h5IPq2c5EmB2+WU7iYpBoSMdw
+external apis:
+0 items
+source infos:
+1 items
+/Users/benparker/development/scala/rabb-it/project/Build.scala -> 
+AAAAAAAAAAA=
+compilations:
+9 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTS4J/+J1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAUy9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvaW8taXQvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABLw==
+1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTS5lmTh1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAUy9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvaW8taXQvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABLw==
+2 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTS5106N1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAUy9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvaW8taXQvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABLw==
+3 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTKcdsh1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAUy9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvaW8taXQvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABLw==
+4 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTM0Qt11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAVS9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv
+5 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTM3Tdh1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAVS9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv
+6 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTM7Tol1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAVS9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv
+7 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTM9/cx1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAVS9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv
+8 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTNA6fd1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAVS9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv

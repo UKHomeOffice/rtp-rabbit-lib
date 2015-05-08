@@ -1,0 +1,562 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes
+compile options:
+7 items
+0 -> -feature
+1 -> -language:implicitConversions
+2 -> -language:higherKinds
+3 -> -language:existentials
+4 -> -language:reflectiveCalls
+5 -> -language:postfixOps
+6 -> -Yrangepos
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.11.6
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+26 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Consumer.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anon$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$parseBody$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$parseBody$2.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$receive$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$2.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$apply$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$class.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$$anonfun$publish$1$$anon$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$$anonfun$publish$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$class.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Queue$class.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Queue.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$$anonfun$createConnection$1.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$class.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitException$.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitException.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitPublisherException.class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> /Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitMessage.class
+binary dependencies:
+39 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/.ivy2/cache/org.scalautils/scalautils_2.11/jars/scalautils_2.11-2.1.5.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> /Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.9.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/cache/org.scalautils/scalautils_2.11/jars/scalautils_2.11-2.1.5.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/cache/org.scalautils/scalautils_2.11/jars/scalautils_2.11-2.1.5.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> /Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/.ivy2/cache/com.typesafe/config/jars/config-1.2.1.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> /Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> /Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> /Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> /Users/benparker/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.9.jar
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> /Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+7 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> /Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+26 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> uk.gov.homeoffice.rabbitmq.Consumer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anon$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$parseBody$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$parseBody$2
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$receive$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$2
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$apply$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk.gov.homeoffice.rabbitmq.ConsumerActor$class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> uk.gov.homeoffice.rabbitmq.Publisher
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> uk.gov.homeoffice.rabbitmq.Publisher$$anonfun$publish$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> uk.gov.homeoffice.rabbitmq.Publisher$$anonfun$publish$1$$anon$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> uk.gov.homeoffice.rabbitmq.Publisher$class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> uk.gov.homeoffice.rabbitmq.Queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> uk.gov.homeoffice.rabbitmq.Queue$class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> uk.gov.homeoffice.rabbitmq.Rabbit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> uk.gov.homeoffice.rabbitmq.Rabbit$
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> uk.gov.homeoffice.rabbitmq.Rabbit$$anonfun$createConnection$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> uk.gov.homeoffice.rabbitmq.Rabbit$class
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> uk.gov.homeoffice.rabbitmq.RabbitException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> uk.gov.homeoffice.rabbitmq.RabbitException$
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> uk.gov.homeoffice.rabbitmq.RabbitPublisherException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> uk.gov.homeoffice.rabbitmq.RabbitMessage
+used names:
+315 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> AnyRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> Future
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> JValue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> JsonError
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> Or
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> T
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> concurrent
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> json
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> json4s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> org
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> package
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> scalautils
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> !
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> $anon
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ->
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> <init>
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> A1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> AMQP
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Actor
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ActorLogging
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ActorRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Array
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> B1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Bad
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> BasicProperties
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Byte
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ByteString
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Consumer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ConsumerActor
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> DefaultConsumer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Envelope
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ExecutionContext
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Function1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Future
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Good
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Implicits
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JObject
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JString
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JValue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JsonAST
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JsonError
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> JsonMethods
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> LoggingReceive
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> MessageProperties
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Or
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> PERSISTENT_BASIC
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Predef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Rabbit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> RabbitMessage
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> String
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> StringContext
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Throwable
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Try
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> Unit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ack
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> actor
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> actorRef2Scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> akka
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> apply
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> asInstanceOf
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> b
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> basicConsume
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> basicPublish
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> body
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> client
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> close
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> collect
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> com
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> compact
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> concurrent
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> connection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> consume
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> consumer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> context
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> createChannel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> data
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> debug
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> envelope
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> error
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> errorQueue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> event
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> fatalException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> fold
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> getBytes
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> getDeliveryTag
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> getOrElse
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> global
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> invalidJson
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> isInstanceOf
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> j
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> j2m
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> jjj
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> json
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> json4s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> log
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> merge
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> nack
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> native
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ne
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> ooo
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> org
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> package
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> parse
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> parseBody
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> publishError
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> rabbitMessage
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> render
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> result
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> scalautils
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> self
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> sender
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> string2JsonInput
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> successful
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> super$postStop
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> super$preStart
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> unchecked
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> unknown
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> utf8String
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> util
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> validJson
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> x$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> x$2
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> x$3
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> x$4
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> $anon
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> <init>
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> AnyRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Bad
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Boolean
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> ConfirmListener
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> ExecutionContext
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Future
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Good
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Implicits
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> JValue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> JsonError
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> JsonMethods
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Long
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> MessageProperties
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Or
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> PERSISTENT_BASIC
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Predef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Promise
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Publisher
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Rabbit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> RabbitPublisherException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> StringContext
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> Throwable
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> addConfirmListener
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> apply
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> basicPublish
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> client
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> com
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> compact
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> concurrent
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> confirmSelect
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> connection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> createChannel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> failure
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> future
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> getBytes
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> global
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> json
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> json4s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> native
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> org
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> package
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> pretty
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> println
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> promise
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> render
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> scalautils
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> success
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> t
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> x$1
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> x$2
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> x$3
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> x$4
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> ->
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> AnyRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> Channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> JavaConversions
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> Map
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> Predef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> Queue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> String
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> StringContext
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> apply
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> client
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> collection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> com
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> errorQueueName
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> getQueue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> mapAsJavaMap
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> queueDeclare
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> queueName
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> <init>
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> Address
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> AnyRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> Buffer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> ClassTag
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> Config
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> Connection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> ConnectionFactory
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> HasConfig
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> JavaConversions
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> Rabbit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> TimeUnit
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> address
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> amqpConfig
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> apply
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> asScalaBuffer
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> c
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> canBuildFrom
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> client
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> collection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> com
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> concurrent
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> config
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> connection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> createConnection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> factory
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getBoolean
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getConfig
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getConfigList
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getDuration
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getInt
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> getString
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> java
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> map
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> materializeClassTag
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> mutable
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> newConnection
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> package
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> setAutomaticRecoveryEnabled
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> setConnectionTimeout
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> toArray
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> toInt
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> typesafe
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> util
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> <init>
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> Exception
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> JValue
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> Predef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> RabbitException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> RabbitPublisherException
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> String
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> Throwable
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> asInstanceOf
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> json
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> json4s
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> message
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> org
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> package
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> t
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> <init>
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> AnyRef
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> ByteString
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> Channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> Long
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> RabbitMessage
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> akka
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> basicAck
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> basicNack
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> body
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> channel
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> client
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> com
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> deliveryTag
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> gov
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> homeoffice
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> rabbitmq
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> scala
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> uk
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> util
+product stamps:
+26 items
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Consumer.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anon$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$parseBody$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$parseBody$2.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$receive$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$2.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2$$anonfun$apply$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$$anonfun$uk$gov$homeoffice$rabbitmq$ConsumerActor$$consume$2.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor$class.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/ConsumerActor.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$$anonfun$publish$1$$anon$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$$anonfun$publish$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher$class.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Publisher.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Queue$class.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Queue.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$$anonfun$createConnection$1.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit$class.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/Rabbit.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitException$.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitException.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitMessage.class -> lastModified(1431084235000)
+/Users/benparker/development/scala/rabb-it/target/scala-2.11/classes/uk/gov/homeoffice/rabbitmq/RabbitPublisherException.class -> lastModified(1431084235000)
+source stamps:
+7 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> hash(65852bdbad5e81482639a353c39f78b7d0e9d5eb)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> hash(f7ca55d9873e941b2269fe5d66933053ba82fc6d)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> hash(d793ee0b454be0d67aec896d8dd7c853daf2dfa4)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> hash(a688a20edd4d9309192032ba873871d3c57cc5a3)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> hash(d30432c1d6027419502f0d8e488f8afd5f20c2b8)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> hash(16b1836c3b17034c86662eac75f6314c94a26954)
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> hash(e64e87e89684724af8c855168eaefb5f2b5a5d87)
+binary stamps:
+10 items
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar -> lastModified(1337313646000)
+/Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar -> lastModified(1426085066000)
+/Users/benparker/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.9.jar -> lastModified(1425056383000)
+/Users/benparker/.ivy2/cache/com.typesafe/config/jars/config-1.2.1.jar -> lastModified(1399042454000)
+/Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar -> lastModified(1414113005000)
+/Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar -> lastModified(1414113034000)
+/Users/benparker/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.2.11.jar -> lastModified(1414113048000)
+/Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar -> lastModified(1424912463000)
+/Users/benparker/.ivy2/cache/org.scalautils/scalautils_2.11/jars/scalautils_2.11-2.1.5.jar -> lastModified(1398726407000)
+/Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar -> lastModified(1431003593000)
+class names:
+10 items
+/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home/jre/lib/rt.jar -> java.lang.Object
+/Users/benparker/.ivy2/cache/com.rabbitmq/amqp-client/jars/amqp-client-3.5.0.jar -> com.rabbitmq.client.Channel
+/Users/benparker/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.9.jar -> akka.util.ByteString
+/Users/benparker/.ivy2/cache/com.typesafe/config/jars/config-1.2.1.jar -> com.typesafe.config.Config
+/Users/benparker/.ivy2/cache/org.json4s/json4s-ast_2.11/jars/json4s-ast_2.11-3.2.11.jar -> org.json4s.JsonAST$
+/Users/benparker/.ivy2/cache/org.json4s/json4s-core_2.11/jars/json4s-core_2.11-3.2.11.jar -> org.json4s.package$
+/Users/benparker/.ivy2/cache/org.json4s/json4s-native_2.11/jars/json4s-native_2.11-3.2.11.jar -> org.json4s.native.JsonMethods$
+/Users/benparker/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar -> scala.Long
+/Users/benparker/.ivy2/cache/org.scalautils/scalautils_2.11/jars/scalautils_2.11-2.1.5.jar -> org.scalautils.Or
+/Users/benparker/.ivy2/local/uk.gov.homeoffice/io-it_2.11/1.0-SNAPSHOT/jars/io-it_2.11.jar -> uk.gov.homeoffice.HasConfig
+internal apis:
+7 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDNnOsQAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAFXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cL3eC9J0AAZub3RpZnlzcQB+AAwV0VKsdAAEd2FpdHNxAH4ADAk1D310AA0kYXNJbnN0YW5jZU9mc3EAfgAMcSXrVXQABmVxdWFsc3NxAH4ADFjp9x50AAxhc0luc3RhbmNlT2ZzcQB+AAzJ1+2qdAAIQ29uc3VtZXJzcQB+AAzMQZHcdAAMc3luY2hyb25pemVkc3EAfgAMlGyczXQADSRpc0luc3RhbmNlT2ZzcQB+AAwCBDcvdAAJbm90aWZ5QWxsc3EAfgAMANJ2WHQADGlzSW5zdGFuY2VPZnNxAH4ADEvuynB0AAI9PXNxAH4ADL94LWp0AAVjbG9uZXNxAH4ADJzWCNh0AAh0b1N0cmluZ3NxAH4ADJw37wB0AAIhPXNxAH4ADPwWlKV0AAdjb25zdW1lc3EAfgAMvy39h3QACGdldENsYXNzc3EAfgAMRdOpOnQAAm5lc3EAfgAMvR4IW3QAAmVxc3EAfgAM/Lq8P3QAAiMjc3EAfgAM5SDiCHQACGZpbmFsaXplc3EAfgAMnJAEQnQACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AQXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAXQAI3VrLmdvdi5ob21lb2ZmaWNlLnJhYmJpdG1xLkNvbnN1bWVydXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAFzcgAXeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXJnaVXb43KQawIABlsAC2Fubm90YXRpb25zcQB+AEZMAAJpZHEAfgANTAAKbG93ZXJCb3VuZHQAEEx4c2J0aS9hcGkvVHlwZTtbAA50eXBlUGFyYW1ldGVyc3EAfgBDTAAKdXBwZXJCb3VuZHEAfgBUTAAIdmFyaWFuY2V0ABRMeHNidGkvYXBpL1ZhcmlhbmNlO3hwdXEAfgBMAAAAAHQAJXVrLmdvdi5ob21lb2ZmaWNlLnJhYmJpdG1xLkNvbnN1bWVyLlRzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwdAAHTm90aGluZ3NyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AW3NyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AaHVxAH4AUQAAAABzcQB+AFl0AANBbnlxAH4AYX5yABJ4c2J0aS5hcGkuVmFyaWFuY2UAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAlJbnZhcmlhbnR+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cQB+AHF0AAVUcmFpdHVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AHp4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cQB+AFtzcQB+AHkAcHNxAH4AfnNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBBTAAJaW5oZXJpdGVkcQB+AEFMAAdwYXJlbnRzcQB+AEF4cQB+AFxzcQB+AHkAcHNxAH4AfnVxAH4APAAAAABzcQB+AHkAcHNxAH4AfnVxAH4APAAAAABzcQB+AHkAcHNxAH4AfnVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3EAfgBZdAAGT2JqZWN0c3EAfgBfc3EAfgBidXEAfgBlAAAAA3NxAH4AZ3QABGphdmFzcQB+AGd0AARsYW5ncQB+AGxzcQB+AFlxAH4Ab3NxAH4AX3NxAH4AYnVxAH4AZQAAAAJzcQB+AGdxAH4AanEAfgBsdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAARzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAadWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXFzcQB+AKB0ABF1ay5nb3YuaG9tZW9mZmljZXNxAH4AoHQABnVrLmdvdnNxAH4AoHQAAnVrc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFNM0Rgx3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEQvVXNlcnMvYmVucGFya2VyL2RldmVsb3BtZW50L3NjYWxhL3JhYmItaXQvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFGWFK9utXoFIJjmjU8OfeLfQ6dXr
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHCDacF4AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAACc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwvURFDnQABHNlbGZzcQB+AAuA0Ct3dAAHY29udGV4dHVxAH4ACQAAACpzcQB+AAu6LzSSdAAGbm90aWZ5c3EAfgALegJxAHQAB1JlY2VpdmVzcQB+AAt/pHQZdAAHY2hhbm5lbHNxAH4AC3sY8kl0AAR3YWl0c3EAfgALTbT4pHQADnN1cGVyJHByZVN0YXJ0c3EAfgALL0T8KnQADSRhc0luc3RhbmNlT2ZzcQB+AAuqBCb3dAAMcHVibGlzaEVycm9yc3EAfgALP1MfH3QABmVxdWFsc3NxAH4AC2ovMCN0AAxhc0luc3RhbmNlT2ZzcQB+AAuxhgbNdAAMc3luY2hyb25pemVkc3EAfgALAZ3XN3QACXBhcnNlQm9keXNxAH4ACwPOTDV0AA0kaXNJbnN0YW5jZU9mc3EAfgALBbsqBnQAB3JlY2VpdmVzcQB+AAtMs/4qdAAKcHJlUmVzdGFydHNxAH4ACw8A8jB0AA1hcm91bmRSZWNlaXZlc3EAfgALjPIxxHQADUNvbnN1bWVyQWN0b3JzcQB+AAujLYhTdAALcG9zdFJlc3RhcnRzcQB+AAvsH3FcdAAIcG9zdFN0b3BzcQB+AAs7EfMedAAJbm90aWZ5QWxsc3EAfgALWkS/BXQADnN1cGVyJHBvc3RTdG9wc3EAfgALEAt5VHQAEWFyb3VuZFBvc3RSZXN0YXJ0c3EAfgAL47WGhHQADGlzSW5zdGFuY2VPZnNxAH4AC06EgLB0ABBhcm91bmRQcmVSZXN0YXJ0c3EAfgALkgi7RXQADmFyb3VuZFBvc3RTdG9wc3EAfgALhCxI3XQACHByZVN0YXJ0c3EAfgALVKzVUXQACXVuaGFuZGxlZHNxAH4AC6cnDfZ0AAI9PXNxAH4AC9qkz1x0AAVjbG9uZXNxAH4ACw0t5nh0AAYkaW5pdCRzcQB+AAsHb1P0dAAGc2VuZGVyc3EAfgALhcurMnQACHRvU3RyaW5nc3EAfgALDCowkXQAAiE9c3EAfgAL2jgPN3QAB2NvbnN1bWVzcQB+AAu2i0pgdAAIZ2V0Q2xhc3NzcQB+AAvLqzuRdAACbmVzcQB+AAvNvQ2TdAASc3VwZXJ2aXNvclN0cmF0ZWd5c3EAfgALo7gzkXQAAmVxc3EAfgALh7hRYHQAA2xvZ3NxAH4AC05fAEx0AAIjI3NxAH4AC5EBY6d0AAhmaW5hbGl6ZXNxAH4AC7Vo5FZ0AAhoYXNoQ29kZXNxAH4AC5j8FT10AA5hcm91bmRQcmVTdGFydHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAAFzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AG94cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgAMeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc8cREyFpnNwkAgABQgAFZmxhZ3N4cAF0ACh1ay5nb3YuaG9tZW9mZmljZS5yYWJiaXRtcS5Db25zdW1lckFjdG9ydXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAFVHJhaXR1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgCIeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgCHAHBzcQB+AIxzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4Ab0wACWluaGVyaXRlZHEAfgBvTAAHcGFyZW50c3EAfgBveHEAfgCQc3EAfgCHAHBzcQB+AIx1cQB+AGoAAAAAc3EAfgCHAHBzcQB+AIx1cQB+AGoAAAAAc3EAfgCHAHBzcQB+AIx1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAABHNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADEwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AI90AAxBY3RvckxvZ2dpbmdzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AI9zcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgAMeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGFra2FzcQB+AKx0AAVhY3RvcnNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCtc3EAfgCgdAAFQWN0b3JxAH4ApnNxAH4AoHQABk9iamVjdHNxAH4ApHNxAH4Ap3VxAH4AqgAAAANzcQB+AKx0AARqYXZhc3EAfgCsdAAEbGFuZ3EAfgCzc3EAfgCgdAADQW55c3EAfgCkc3EAfgCndXEAfgCqAAAAAnNxAH4ArHQABXNjYWxhcQB+ALN1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAABHNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgAMeHB0ABp1ay5nb3YuaG9tZW9mZmljZS5yYWJiaXRtcXNxAH4AyHQAEXVrLmdvdi5ob21lb2ZmaWNlc3EAfgDIdAAGdWsuZ292c3EAfgDIdAACdWtzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU0zRGDHdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgAMTAAPc291cmNlRGlyZWN0b3J5cQB+AAx4cHQARC9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAU98pV2Yc+lBsiaf5dZpMwU7qC/G0=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHA+y4y6AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAFnNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cGO+UrZ0AAZub3RpZnlzcQB+AAwtOPaxdAAEd2FpdHNxAH4ADHdNKPZ0AA0kYXNJbnN0YW5jZU9mc3EAfgAMGNW2JXQABmVxdWFsc3NxAH4ADPkNL610AAxhc0luc3RhbmNlT2ZzcQB+AAxrgzSddAAMc3luY2hyb25pemVkc3EAfgAM3dQ3YHQADSRpc0luc3RhbmNlT2ZzcQB+AAx5OqpndAAJbm90aWZ5QWxsc3EAfgAM1nKLO3QADGlzSW5zdGFuY2VPZnNxAH4ADCml30N0AAdwdWJsaXNoc3EAfgAMRiMPznQAAj09c3EAfgAMHrdrwXQABWNsb25lc3EAfgAM0jgddXQABiRpbml0JHNxAH4ADN7i8mx0AAh0b1N0cmluZ3NxAH4ADAKj85l0AAIhPXNxAH4ADOvrbdR0AAhnZXRDbGFzc3NxAH4ADGUMd0d0AAlQdWJsaXNoZXJzcQB+AAxoYWDidAACbmVzcQB+AAwx65zAdAACZXFzcQB+AAzPI/uCdAACIyNzcQB+AAzLiIekdAAIZmluYWxpemVzcQB+AAx02kqsdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBDeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHABdAAkdWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXEuUHVibGlzaGVydXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAFVHJhaXR1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgBceHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBbAHBzcQB+AGBzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AQ0wACWluaGVyaXRlZHEAfgBDTAAHcGFyZW50c3EAfgBDeHEAfgBkc3EAfgBbAHBzcQB+AGB1cQB+AD4AAAAAc3EAfgBbAHBzcQB+AGB1cQB+AD4AAAAAc3EAfgBbAHBzcQB+AGB1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGN0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGNzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AIB0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIFzcQB+AHR0AANBbnlzcQB+AHhzcQB+AHt1cQB+AH4AAAACc3EAfgCAdAAFc2NhbGFxAH4Ah3VyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAAEc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AA14cHQAGnVrLmdvdi5ob21lb2ZmaWNlLnJhYmJpdG1xc3EAfgCRdAARdWsuZ292LmhvbWVvZmZpY2VzcQB+AJF0AAZ1ay5nb3ZzcQB+AJF0AAJ1a3NyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTNEYMd1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABEL1VzZXJzL2JlbnBhcmtlci9kZXZlbG9wbWVudC9zY2FsYS9yYWJiLWl0L3RhcmdldC9zY2FsYS0yLjExL2NsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABTXk+4LRUvg1nrsiW2N18hT2vLfpA==
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHA2w44JAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cCUDWNp0AAZub3RpZnlzcQB+AAyqG7h+dAAEd2FpdHNxAH4ADICTm/Z0AA0kYXNJbnN0YW5jZU9mc3EAfgAMW39Zu3QABmVxdWFsc3NxAH4ADH5RJGR0AAVxdWV1ZXNxAH4ADB4jAFB0AAxhc0luc3RhbmNlT2ZzcQB+AAw2t5hudAAOZXJyb3JRdWV1ZU5hbWVzcQB+AAycEZNRdAAMc3luY2hyb25pemVkc3EAfgAMEKpDPHQADSRpc0luc3RhbmNlT2ZzcQB+AAyChXkwdAAKZXJyb3JRdWV1ZXNxAH4ADMSCko10AAlub3RpZnlBbGxzcQB+AAwsDZH6dAAMaXNJbnN0YW5jZU9mc3EAfgAMH44hJ3QAAj09c3EAfgAM2EbgQXQABWNsb25lc3EAfgAMfOB/BnQACXF1ZXVlTmFtZXNxAH4ADClH4EN0AAVRdWV1ZXNxAH4ADD5CmQx0AAYkaW5pdCRzcQB+AAyd5AebdAAIdG9TdHJpbmdzcQB+AAz5KJEZdAACIT1zcQB+AAwrPedadAAIZ2V0Q2xhc3NzcQB+AAzicPO6dAACbmVzcQB+AAyw6nw/dAACZXFzcQB+AAxIyP3LdAACIyNzcQB+AAwHOlljdAAIZmluYWxpemVzcQB+AAy+A1/bdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBJeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHABdAAgdWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXEuUXVldWV1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAVUcmFpdHVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AGJ4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AGEAcHNxAH4AZnNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBJTAAJaW5oZXJpdGVkcQB+AElMAAdwYXJlbnRzcQB+AEl4cQB+AGpzcQB+AGEAcHNxAH4AZnVxAH4ARAAAAABzcQB+AGEAcHNxAH4AZnVxAH4ARAAAAABzcQB+AGEAcHNxAH4AZnVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AaXQABk9iamVjdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AaXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAA3NyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAEamF2YXNxAH4AhnQABGxhbmdzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4Ah3NxAH4AenQAA0FueXNxAH4AfnNxAH4AgXVxAH4AhAAAAAJzcQB+AIZ0AAVzY2FsYXEAfgCNdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAARzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAadWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXFzcQB+AJd0ABF1ay5nb3YuaG9tZW9mZmljZXNxAH4Al3QABnVrLmdvdnNxAH4Al3QAAnVrc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFNM0Rgx3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEQvVXNlcnMvYmVucGFya2VyL2RldmVsb3BtZW50L3NjYWxhL3JhYmItaXQvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFKaIog7dTZMJGSAyuoc4cdPFfMWj
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAK37V7AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cGB8+Jx0AAZub3RpZnlzcQB+AAxKYUb2dAAEd2FpdHNxAH4ADCRjt3Z0AA0kYXNJbnN0YW5jZU9mc3EAfgAMpqBAhHQABmVxdWFsc3NxAH4ADFINfdN0AAxhc0luc3RhbmNlT2ZzcQB+AAyYBqOLdAAMc3luY2hyb25pemVkc3EAfgAMVu6xxHQADSRpc0luc3RhbmNlT2ZzcQB+AAxh6i96dAAGY29uZmlnc3EAfgAMr/R8rXQACW5vdGlmeUFsbHNxAH4ADHi1jKB0AAxpc0luc3RhbmNlT2ZzcQB+AAxe7Gl/dAACPT1zcQB+AAy6hDP3dAAFY2xvbmVzcQB+AAzJ+SbzdAAGJGluaXQkc3EAfgAM/xcCwHQACHRvU3RyaW5nc3EAfgAMtBLe6HQAAiE9c3EAfgAMeUi4RnQACmNvbm5lY3Rpb25zcQB+AAw53dqfdAAIZ2V0Q2xhc3NzcQB+AAyjOkJgdAAQY3JlYXRlQ29ubmVjdGlvbnNxAH4ADFHKlFt0AAJuZXNxAH4ADH11hPF0AAJlcXNxAH4ADPWFw550AAIjI3NxAH4ADFq2n/90AAhmaW5hbGl6ZXNxAH4ADC8GN990AAZSYWJiaXRzcQB+AAwYBjIjdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAACc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBHeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHABdAAhdWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXEuUmFiYml0dXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAFVHJhaXR1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgBgeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBfAHBzcQB+AGRzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AR0wACWluaGVyaXRlZHEAfgBHTAAHcGFyZW50c3EAfgBHeHEAfgBoc3EAfgBfAHBzcQB+AGR1cQB+AEIAAAAAc3EAfgBfAHBzcQB+AGR1cQB+AEIAAAAAc3EAfgBfAHBzcQB+AGR1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGd0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGdzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AIR0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIVzcQB+AHh0AANBbnlzcQB+AHxzcQB+AH91cQB+AIIAAAACc3EAfgCEdAAFc2NhbGFxAH4Ai3NxAH4ARHEAfgBRdXEAfgBSAAAAAHNxAH4AVAB0ACF1ay5nb3YuaG9tZW9mZmljZS5yYWJiaXRtcS5SYWJiaXR1cQB+AFcAAAAAfnEAfgBZdAAGTW9kdWxldXEAfgBdAAAAAHNxAH4AXwBwc3EAfgBkcQB+AGlzcQB+AF8AcHNxAH4AZHNxAH4AbHNxAH4AXwBwc3EAfgBkdXEAfgBCAAAAAHNxAH4AXwBwc3EAfgBkdXEAfgBCAAAAAHNxAH4AXwBwc3EAfgBkdXEAfgB2AAAAA3NxAH4AeHQACUhhc0NvbmZpZ3NxAH4AfHNxAH4Af3VxAH4AggAAAARzcQB+AIR0AAJ1a3NxAH4AhHQAA2dvdnNxAH4AhHQACmhvbWVvZmZpY2VxAH4Ai3NxAH4AeHEAfgB7c3EAfgB8c3EAfgB/dXEAfgCCAAAAA3NxAH4AhHEAfgCHc3EAfgCEcQB+AIlxAH4Ai3NxAH4AeHEAfgCNc3EAfgB8c3EAfgB/dXEAfgCCAAAAAnNxAH4AhHEAfgCScQB+AIt1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAABHNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHB0ABp1ay5nb3YuaG9tZW9mZmljZS5yYWJiaXRtcXNxAH4AwXQAEXVrLmdvdi5ob21lb2ZmaWNlc3EAfgDBdAAGdWsuZ292c3EAfgDBdAACdWtzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAU0zRGDHdXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQARC9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAU0wQywdYCdBlQLw2OSI+K/V8gwrg=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAz9FvAAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAJXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cPYiYQF0AA9SYWJiaXRFeGNlcHRpb25zcQB+AAwx5m7PdAAGbm90aWZ5c3EAfgAMhhOQunQAD3ByaW50U3RhY2tUcmFjZXNxAH4ADNnjJnh0ABNnZXRMb2NhbGl6ZWRNZXNzYWdlc3EAfgAM93mVuHQABHdhaXRzcQB+AAylIQxYdAANJGFzSW5zdGFuY2VPZnNxAH4ADLxIhot0AAZlcXVhbHNzcQB+AAy3H5FQdAAEanNvbnNxAH4ADF+/5550ABBmaWxsSW5TdGFja1RyYWNlc3EAfgAMP3har3QACWluaXRDYXVzZXNxAH4ADMXRI3Z0AAF0c3EAfgAM3PdqUXQAGFJhYmJpdFB1Ymxpc2hlckV4Y2VwdGlvbnNxAH4ADCISrj50AAxhc0luc3RhbmNlT2ZzcQB+AAz/yPB5dAAMc3luY2hyb25pemVkc3EAfgAMG6VihHQADSRpc0luc3RhbmNlT2ZzcQB+AAyr4yTEdAAIZ2V0Q2F1c2VzcQB+AAxKn23tdAAJbm90aWZ5QWxsc3EAfgAMyq2Zc3QADGlzSW5zdGFuY2VPZnNxAH4ADGkgI0t0AA1nZXRTdGFja1RyYWNlc3EAfgAMF5bdD3QAFGdldFN0YWNrVHJhY2VFbGVtZW50c3EAfgAMKKtZi3QABjxpbml0PnNxAH4ADLGR5mN0AApnZXRNZXNzYWdlc3EAfgAMvLwm23QADXNldFN0YWNrVHJhY2VzcQB+AAxn7LxEdAANZ2V0U3VwcHJlc3NlZHNxAH4ADIChfQZ0AAI9PXNxAH4ADGMed4d0ABJnZXRTdGFja1RyYWNlRGVwdGhzcQB+AAxViBqXdAAFY2xvbmVzcQB+AAze8lncdAANYWRkU3VwcHJlc3NlZHNxAH4ADGvJmLZ0AAdtZXNzYWdlc3EAfgAM4zmkQnQACHRvU3RyaW5nc3EAfgAMOQkaW3QAAiE9c3EAfgAMrjcmOXQACGdldENsYXNzc3EAfgAM5xopJ3QAAm5lc3EAfgAMI9TIEHQAAmVxc3EAfgAMO41yUXQAAiMjc3EAfgAM4c7WN3QACGZpbmFsaXplc3EAfgAMMHijzHQACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAnNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AYXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAKnVrLmdvdi5ob21lb2ZmaWNlLnJhYmJpdG1xLlJhYmJpdEV4Y2VwdGlvbnVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAHBzcgAgeHNidGkuU2FmZUxhenkkJGFub25mdW4kc3RyaWN0JDEAAAAAAAAAAAIAAUwAB3ZhbHVlJDFxAH4Aenhwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AeQBwc3EAfgB+c3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AGFMAAlpbmhlcml0ZWRxAH4AYUwAB3BhcmVudHNxAH4AYXhxAH4AgnNxAH4AeQBwc3EAfgB+dXEAfgBcAAAAAHNxAH4AeQBwc3EAfgB+dXEAfgBcAAAAAHNxAH4AeQBwc3EAfgB+dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAVzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCBdAAJRXhjZXB0aW9uc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgCBc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgCedAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCfc3EAfgCSdAAJVGhyb3dhYmxlcQB+AJhzcQB+AJJ0AAxTZXJpYWxpemFibGVzcQB+AJZzcQB+AJl1cQB+AJwAAAADc3EAfgCecQB+AKFzcQB+AJ50AAJpb3EAfgClc3EAfgCSdAAGT2JqZWN0cQB+AJhzcQB+AJJ0AANBbnlzcQB+AJZzcQB+AJl1cQB+AJwAAAACc3EAfgCedAAFc2NhbGFxAH4ApXNxAH4AXnEAfgBrdXEAfgBsAAAAAHNxAH4AbgB0ADN1ay5nb3YuaG9tZW9mZmljZS5yYWJiaXRtcS5SYWJiaXRQdWJsaXNoZXJFeGNlcHRpb251cQB+AHEAAAAAcQB+AHV1cQB+AHcAAAAAc3EAfgB5AHBzcQB+AH5xAH4Ag3NxAH4AeQBwc3EAfgB+c3EAfgCGc3EAfgB5AHBzcQB+AH51cQB+AFwAAAAAc3EAfgB5AHBzcQB+AH51cQB+AFwAAAAAc3EAfgB5AHBzcQB+AH51cQB+AJAAAAAGc3EAfgCSdAAPUmFiYml0RXhjZXB0aW9uc3EAfgCWc3EAfgCZdXEAfgCcAAAABXNxAH4AnnQAAnVrc3EAfgCedAADZ292c3EAfgCedAAKaG9tZW9mZmljZXNxAH4AnnQACHJhYmJpdG1xcQB+AKVzcQB+AJJ0AAlFeGNlcHRpb25zcQB+AJZzcQB+AJl1cQB+AJwAAAADc3EAfgCecQB+AKFzcQB+AJ5xAH4Ao3EAfgClc3EAfgCScQB+AKdxAH4A3HNxAH4AknEAfgCpc3EAfgCWc3EAfgCZdXEAfgCcAAAAA3NxAH4AnnEAfgChc3EAfgCedAACaW9xAH4ApXNxAH4AknEAfgCxcQB+ANxzcQB+AJJxAH4As3NxAH4AlnNxAH4AmXVxAH4AnAAAAAJzcQB+AJ5xAH4AuHEAfgCldXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAARzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAadWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXFzcQB+APF0ABF1ay5nb3YuaG9tZW9mZmljZXNxAH4A8XQABnVrLmdvdnNxAH4A8XQAAnVrc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFNM0Rgx3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEQvVXNlcnMvYmVucGFya2VyL2RldmVsb3BtZW50L3NjYWxhL3JhYmItaXQvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFBaxg2w7FwNMhmYurHX2MUyUomlU
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHCr2hcUAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cLlQ+g10AAZub3RpZnlzcQB+AAwXrNo7dAANUmFiYml0TWVzc2FnZXNxAH4ADIs1UPF0AARib2R5c3EAfgAMTp04v3QABHdhaXRzcQB+AAwv9MCDdAANJGFzSW5zdGFuY2VPZnNxAH4ADJdrJKl0AAZlcXVhbHNzcQB+AAz+H6s8dAAMYXNJbnN0YW5jZU9mc3EAfgAM3D6eZ3QADHN5bmNocm9uaXplZHNxAH4ADKwf8QF0AA0kaXNJbnN0YW5jZU9mc3EAfgAMK0Xm0HQABG5hY2tzcQB+AAy42TFpdAAJbm90aWZ5QWxsc3EAfgAMU0m/qXQADGlzSW5zdGFuY2VPZnNxAH4ADG12xCZ0AAY8aW5pdD5zcQB+AAwMYWbzdAACPT1zcQB+AAybaIt/dAAFY2xvbmVzcQB+AAxAEHvSdAALZGVsaXZlcnlUYWdzcQB+AAy9lRBIdAADYWNrc3EAfgAM1X0soHQACHRvU3RyaW5nc3EAfgAMMnv10nQAAiE9c3EAfgAMbwGnMHQACGdldENsYXNzc3EAfgAMIrdWM3QAAm5lc3EAfgAMwB+Xg3QAAmVxc3EAfgAMrlQzP3QAAiMjc3EAfgAMR58OFXQACGZpbmFsaXplc3EAfgAMnMSbK3QACGhhc2hDb2Rlc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ASXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHQAKHVrLmdvdi5ob21lb2ZmaWNlLnJhYmJpdG1xLlJhYmJpdE1lc3NhZ2V1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgATeHNidGkuU2FmZUxhenkkSW1wbFACLpOXl0A/AgADWgAIYml0bWFwJDBMAAJfdHQAEkxqYXZhL2xhbmcvT2JqZWN0O0wABGV2YWx0ABFMc2NhbGEvRnVuY3Rpb24wO3hyABZ4c2J0aS5hcGkuQWJzdHJhY3RMYXp503e1AV+756ACAAB4cABwc3IAIHhzYnRpLlNhZmVMYXp5JCRhbm9uZnVuJHN0cmljdCQxAAAAAAAAAAACAAFMAAd2YWx1ZSQxcQB+AGJ4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+AGEAcHNxAH4AZnNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBJTAAJaW5oZXJpdGVkcQB+AElMAAdwYXJlbnRzcQB+AEl4cQB+AGpzcQB+AGEAcHNxAH4AZnVxAH4ARAAAAABzcQB+AGEAcHNxAH4AZnVxAH4ARAAAAABzcQB+AGEAcHNxAH4AZnVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAACc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AaXQABk9iamVjdHNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AaXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAA3NyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAEamF2YXNxAH4AhnQABGxhbmdzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4Ah3NxAH4AenQAA0FueXNxAH4AfnNxAH4AgXVxAH4AhAAAAAJzcQB+AIZ0AAVzY2FsYXEAfgCNdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAARzcgAReHNidGkuYXBpLlBhY2thZ2V+WY/2rs45WAIAAUwABG5hbWVxAH4ADXhwdAAadWsuZ292LmhvbWVvZmZpY2UucmFiYml0bXFzcQB+AJd0ABF1ay5nb3YuaG9tZW9mZmljZXNxAH4Al3QABnVrLmdvdnNxAH4Al3QAAnVrc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFNM0Rgx3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AEQvVXNlcnMvYmVucGFya2VyL2RldmVsb3BtZW50L3NjYWxhL3JhYmItaXQvdGFyZ2V0L3NjYWxhLTIuMTEvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFOZOh+iWhHJK+MhVFo6u+18rWl2H
+external apis:
+0 items
+source infos:
+7 items
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Consumer.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/ConsumerActor.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Publisher.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Queue.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/Rabbit.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitException.scala -> 
+AAAAAAAAAAA=
+/Users/benparker/development/scala/rabb-it/src/main/scala/uk/gov/homeoffice/rabbitmq/RabbitMessage.scala -> 
+AAAAAAAAAAA=
+compilations:
+1 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABTTNEYMd1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQARC9Vc2Vycy9iZW5wYXJrZXIvZGV2ZWxvcG1lbnQvc2NhbGEvcmFiYi1pdC90YXJnZXQvc2NhbGEtMi4xMS9jbGFzc2VzdAABLw==
