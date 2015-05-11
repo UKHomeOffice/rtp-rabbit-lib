@@ -2,6 +2,7 @@ package uk.gov.homeoffice.rabbitmq
 
 import java.util.concurrent.TimeUnit
 import scala.collection.JavaConversions._
+import scala.util.Try
 import com.rabbitmq.client.{Address, Connection, ConnectionFactory}
 import com.typesafe.config.Config
 import uk.gov.homeoffice.HasConfig
@@ -20,7 +21,7 @@ object Rabbit extends HasConfig {
 
     val factory = new ConnectionFactory()
     factory.setAutomaticRecoveryEnabled(amqpConfig.getBoolean("automatic-recovery"))
-    factory.setConnectionTimeout(amqpConfig.getDuration("timeout", TimeUnit.MILLISECONDS).toInt)
+    factory.setConnectionTimeout(Try(amqpConfig.getDuration("timeout", TimeUnit.MILLISECONDS).toInt).getOrElse(10000))
 
     factory.newConnection(amqpConfig.getConfigList("addresses").map(address).toArray)
   }
