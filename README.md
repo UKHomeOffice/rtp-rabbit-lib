@@ -8,6 +8,8 @@ Project built with the following (main) technologies:
 
 - SBT
 
+- RabbitMQ
+
 Introduction
 ------------
 TODO
