@@ -23,7 +23,8 @@ object Build extends Build {
           "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
           "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
           "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases",
-          "Kamon Repository" at "http://repo.kamon.io"),
+          "Kamon Repository" at "http://repo.kamon.io",
+          "Artifactory Snapshot Realm" at "http://artifactory.registered-traveller.homeoffice.gov.uk/artifactory/libs-snapshot-local/"),
         libraryDependencies ++= Seq(
           "com.typesafe" % "config" % "1.2.1" withSources(),
           "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
