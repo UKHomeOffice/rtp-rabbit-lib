@@ -2,8 +2,9 @@ package uk.gov.homeoffice.rabbitmq
 
 import java.util.concurrent.TimeUnit
 import scala.collection.JavaConversions._
+import scala.util.Try
 import com.rabbitmq.client.{Address, Connection, ConnectionFactory}
-import com.typesafe.config.Config
+import com.typesafe.config.{Config, ConfigFactory}
 import uk.gov.homeoffice.HasConfig
 
 trait Rabbit {
@@ -16,7 +17,7 @@ object Rabbit extends HasConfig {
   private[rabbitmq] def createConnection = {
     def address(c: Config): Address = new Address(c.getString("host"), c.getInt("port"))
 
-    val amqpConfig = config.getConfig("amqp")
+    val amqpConfig = Try { config.getConfig("amqp") } getOrElse amqpDefaultConfig
 
     val factory = new ConnectionFactory()
     factory.setAutomaticRecoveryEnabled(amqpConfig.getBoolean("automatic-recovery"))
@@ -24,4 +25,14 @@ object Rabbit extends HasConfig {
 
     factory.newConnection(amqpConfig.getConfigList("addresses").map(address).toArray)
   }
+
+  private def amqpDefaultConfig = ConfigFactory.parseString("""
+    addresses = [{
+      host = "127.0.0.1"
+      port = 5672
+    }]
+
+    automatic-recovery = on
+
+    timeout = 10000 milliseconds""")
 }

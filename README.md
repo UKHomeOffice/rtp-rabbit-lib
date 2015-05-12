@@ -8,6 +8,8 @@ Project built with the following (main) technologies:
 
 - SBT
 
+- RabbitMQ
+
 Introduction
 ------------
 TODO
@@ -38,3 +40,42 @@ To publish the jar to artifactory you will need to
 2. Edit this .credentials file to fill in the artifactory user and password
 
 > activator publish
+
+Example Usage
+-------------
+```scala
+  object ExampleBoot extends App with HasConfig {
+    implicit val json4sFormats = DefaultFormats
+  
+    val system = ActorSystem("importer-actor-system", config)
+  
+    // Consume
+    system.actorOf(Props(new ConsumerActor with Consumer[String] with ExampleQueue with Rabbit {
+      def consume(json: JValue) = Future {
+        val message = (json \ "message").extract[String]
+        println(s"Congratulations, consumed message '$message'")
+        Good(message)
+      }
+    }))
+  
+    // Publish
+    val publisher = new Publisher with ExampleQueue with Rabbit
+    publisher.publish(JObject("message" -> JString("hello world!")))
+  }
+  
+  trait ExampleQueue extends Queue {
+    def queueName = "rabb-it-example"
+  }
+```
+
+Noting that a "configuration" such as application.conf must be provided e.g.
+```scala
+  amqp {
+    addresses = [{
+      host = "127.0.0.1"
+      port = 5672
+    }]
+  
+    automatic-recovery = on
+  }
+```
