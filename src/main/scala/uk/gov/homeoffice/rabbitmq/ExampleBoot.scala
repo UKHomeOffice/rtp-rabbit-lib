@@ -10,7 +10,7 @@ import uk.gov.homeoffice.HasConfig
 
 /**
  * This example of booting an application to publish to RabbitMQ and consume, must have a local RabbitMQ running on default port of 5672.
- * The configuration can be found in the default application.conf
+ * If a ConfigFactory configuration such as application.conf is not provided (as in this case, but you should provide one), uk.gov.homeoffice.rabbitmq.Rabbit uses defaults.
  */
 object ExampleBoot extends App with HasConfig {
   implicit val json4sFormats = DefaultFormats
