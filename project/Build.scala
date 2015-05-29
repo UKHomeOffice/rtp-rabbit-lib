@@ -30,7 +30,7 @@ object Build extends Build {
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.0" withSources(),
         "org.scalactic" %% "scalactic" % "2.2.4" withSources(),
-        "uk.gov.homeoffice" %% "io-it" % "1.0-SNAPSHOT" withSources()),
+        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources()),
       libraryDependencies ++= Seq(
         "org.specs2" %% "specs2-core" % "3.6" % "test, it" withSources(),
         "org.specs2" %% "specs2-mock" % "3.6" % "test, it" withSources(),
