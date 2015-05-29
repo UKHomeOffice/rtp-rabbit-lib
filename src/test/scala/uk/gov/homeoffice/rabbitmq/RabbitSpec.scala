@@ -1,10 +1,10 @@
 package uk.gov.homeoffice.rabbitmq
 
-import org.specs2.mutable.Specification
-import org.specs2.specification.AfterExample
 import com.rabbitmq.client.Connection
+import org.specs2.mutable.Specification
+import org.specs2.specification.AfterEach
 
-trait RabbitSpec extends Rabbit with AfterExample {
+trait RabbitSpec extends Rabbit with AfterEach {
   self: Specification =>
 
   isolated
