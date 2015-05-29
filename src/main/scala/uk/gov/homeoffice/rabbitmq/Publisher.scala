@@ -4,7 +4,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import org.json4s.JValue
 import org.json4s.native.JsonMethods._
-import org.scalautils.{Bad, Good, Or}
+import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client.{ConfirmListener, MessageProperties}
 import uk.gov.homeoffice.json.JsonError
 
