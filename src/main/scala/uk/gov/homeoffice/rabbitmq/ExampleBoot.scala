@@ -5,7 +5,7 @@ import scala.concurrent.Future
 import akka.actor.{ActorSystem, Props}
 import org.json4s.JsonAST.{JObject, JString}
 import org.json4s.{DefaultFormats, JValue}
-import org.scalautils.Good
+import org.scalactic.Good
 import uk.gov.homeoffice.HasConfig
 
 /**
