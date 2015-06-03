@@ -2,11 +2,13 @@ import sbt.Keys._
 import sbt._
 
 object Build extends Build {
-  lazy val root = Project(id = "rtp-rabbit-lib", base = file("."))
+  val moduleName = "rtp-rabbit-lib"
+
+  lazy val root = Project(id = moduleName, base = file("."))
     .configs(IntegrationTest)
     .settings(Defaults.itSettings: _*)
     .settings(
-      name := "rtp-rabbit-lib",
+      name := moduleName,
       organization := "uk.gov.homeoffice",
       version := "1.0-SNAPSHOT",
       scalaVersion := "2.11.6",
