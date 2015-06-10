@@ -3,8 +3,9 @@ package uk.gov.homeoffice.rabbitmq
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import org.json4s.JValue
+import org.json4s.JsonAST.{JObject, JString}
 import org.json4s.native.JsonMethods._
-import org.scalactic.{ErrorMessage, Bad, Good, Or}
+import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client.{Channel, ConfirmListener, MessageProperties}
 import uk.gov.homeoffice.json.JsonError
 
@@ -18,45 +19,30 @@ trait Publisher {
 
     def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
 
-    def error(t: Throwable) = promise failure RabbitException(t, "Failed to publish JSON", Some(json))
+    def error(t: Throwable) = promise failure new RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
 
     println(s"Publishing JSON to $connection") // TODO - Log as debug
-    publish(compact(render(json)).getBytes, queue, ack, nack, error)
+    publish(json, queue, ack, nack, error)
 
     promise.future
   }
 
-  def publishError(json: JValue): Future[JValue Or JsonError] = {
-    val promise = Promise[JValue Or JsonError]()
+  def publish(e: JsonError): Future[JsonError Or JsonError] = {
+    val promise = Promise[JsonError Or JsonError]()
 
-    def ack = promise success Good(json)
+    def ack = promise success Good(e)
 
-    def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish error JSON ${pretty(render(json))}"))
+    def nack = promise success Bad(e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}"))
 
-    def error(t: Throwable) = promise failure RabbitException(t, "Failed to publish error JSON", Some(json))
+    def error(t: Throwable) = promise failure new RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
 
     println(s"Publishing error JSON to $connection") // TODO - Log as debug
-    publish(compact(render(json)).getBytes, errorQueue, ack, nack, error)
+    publish(e.json merge JObject("error" -> JString(e.error)), errorQueue, ack, nack, error)
 
     promise.future
   }
 
-  def publishError(data: Array[Byte]): Future[Array[Byte] Or ErrorMessage] = {
-    val promise = Promise[Array[Byte] Or ErrorMessage]()
-
-    def ack = promise success Good(data)
-
-    def nack = promise success Bad(s"Rabbit NACK - Failed to publish error ${data.mkString}")
-
-    def error(t: Throwable) = promise failure RabbitException(t, "Failed to publish error", Some(data.mkString))
-
-    println(s"Publishing error to $connection") // TODO - Log as debug
-    publish(data, errorQueue, ack, nack, error)
-
-    promise.future
-  }
-
-  private[rabbitmq] def publish(data: Array[Byte], queue: Channel => String, ack: => Any, nack: => Any, error: Throwable => Any) = Future {
+  private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, error: Throwable => Any) = Future {
     try {
       val channel = connection.createChannel()
       channel.confirmSelect()
@@ -67,7 +53,7 @@ trait Publisher {
         def handleNack(deliveryTag: Long, multiple: Boolean) = nack
       })
 
-      channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, data)
+      channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, compact(render(json)).getBytes)
     } catch {
       case t: Throwable => error(t)
     }

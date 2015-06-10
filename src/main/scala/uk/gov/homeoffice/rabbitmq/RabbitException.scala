@@ -1,3 +1,5 @@
 package uk.gov.homeoffice.rabbitmq
 
-case class RabbitException(t: Throwable, message: String = "Rabbit Error", data: Option[Any] = None) extends Exception(message, t)
+import uk.gov.homeoffice.json.JsonError
+
+class RabbitException(val jsonError: JsonError) extends Exception(jsonError.error, jsonError.exception.orNull)

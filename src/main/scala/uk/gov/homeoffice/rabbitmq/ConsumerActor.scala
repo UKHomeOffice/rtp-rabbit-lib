@@ -57,7 +57,7 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
           rabbitMessage.nack()
         } else {
           log.error(s"BAD processing: $j")
-          publishError(j.json merge JObject("error" -> JString(j.error)))
+          publish(j)
           rabbitMessage.ack()
         }
 
@@ -66,7 +66,7 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
   } getOrElse {
     val unknown = rabbitMessage.body.utf8String
     log.error(s"UKNOWN MESSAGE TYPE WITH CONTENT: $unknown")
-    publishError(JObject("data" -> JString(unknown)) merge JObject("error" -> JString("Unknown data")))
+    publish(JsonError(JObject("data" -> JString(unknown)), "Unknown data"))
     rabbitMessage.ack()
     sender ! KO
   }
