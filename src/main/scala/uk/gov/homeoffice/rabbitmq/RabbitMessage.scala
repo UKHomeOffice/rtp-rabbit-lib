@@ -8,3 +8,9 @@ class RabbitMessage(val deliveryTag: Long, val body: ByteString, channel: Channe
 
   def nack() = channel.basicNack(deliveryTag, false, true)
 }
+
+object RabbitMessage {
+  case object OK
+
+  case object KO
+}
