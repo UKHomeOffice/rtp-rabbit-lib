@@ -30,7 +30,7 @@ object Build extends Build {
       libraryDependencies ++= Seq(
         "com.typesafe" % "config" % "1.2.1" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
-        "com.rabbitmq" % "amqp-client" % "3.5.0" withSources(),
+        "com.rabbitmq" % "amqp-client" % "3.5.3" withSources(),
         "org.scalactic" %% "scalactic" % "2.2.4" withSources(),
         "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources()),
       libraryDependencies ++= Seq(

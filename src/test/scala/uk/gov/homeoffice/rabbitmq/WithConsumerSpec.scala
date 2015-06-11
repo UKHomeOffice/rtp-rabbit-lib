@@ -14,7 +14,7 @@ class WithConsumerSpec extends Specification with RabbitSpec {
       }
 
       publisher.publish(JsonError(JObject(), "Error"))
-      //publisher.publish(JObject())
+      publisher.publish(JObject())
 
       Thread.sleep(2000)
       ok

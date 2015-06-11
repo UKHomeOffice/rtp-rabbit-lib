@@ -12,8 +12,8 @@ trait WithQueue extends Queue {
   override val queueName: String = UUID.randomUUID().toString
 
   override def queue(channel: Channel): String =
-    channel.queueDeclare(queueName, /*durable*/false, /*exclusive*/true, /*autoDelete*/true, /*arguments*/Map("" -> "")).getQueue
+    channel.queueDeclare(queueName, /*durable*/false, /*exclusive*/true, /*autoDelete*/true, /*arguments*/Map("passive" -> "false")).getQueue
 
   override def errorQueue(channel: Channel): String =
-    channel.queueDeclare(errorQueueName, /*durable*/false, /*exclusive*/true, /*autoDelete*/true, /*arguments*/Map("" -> "")).getQueue
+    channel.queueDeclare(errorQueueName, /*durable*/false, /*exclusive*/true, /*autoDelete*/true, /*arguments*/Map("passive" -> "false")).getQueue
 }

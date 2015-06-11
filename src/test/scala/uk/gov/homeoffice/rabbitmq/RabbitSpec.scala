@@ -17,7 +17,7 @@ trait RabbitSpec extends Rabbit with AfterEach {
 
   protected def after = {
     connection.close()
-    println(s"x Closed Rabbit connection: $connection (${connection.hashCode()})")
+    println(s"x Closed Rabbit connection: $connection (hashCode: ${connection.hashCode()})")
   }
 
   /**
