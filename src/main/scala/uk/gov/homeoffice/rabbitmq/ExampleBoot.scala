@@ -15,7 +15,7 @@ import uk.gov.homeoffice.HasConfig
 object ExampleBoot extends App with HasConfig {
   implicit val json4sFormats = DefaultFormats
 
-  val system = ActorSystem("importer-actor-system", config)
+  val system = ActorSystem("rabbit-actor-system", config)
 
   // Consume
   system.actorOf(Props(new ConsumerActor with Consumer[String] with ExampleQueue with Rabbit {
@@ -32,5 +32,5 @@ object ExampleBoot extends App with HasConfig {
 }
 
 trait ExampleQueue extends Queue {
-  def queueName = "rabb-it-example"
+  def queueName = "rabbit-example"
 }

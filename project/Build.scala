@@ -2,11 +2,13 @@ import sbt.Keys._
 import sbt._
 
 object Build extends Build {
-  lazy val root = Project(id = "rtp-rabbit-lib", base = file("."))
+  val moduleName = "rtp-rabbit-lib"
+
+  lazy val root = Project(id = moduleName, base = file("."))
     .configs(IntegrationTest)
     .settings(Defaults.itSettings: _*)
     .settings(
-      name := "rtp-rabbit-lib",
+      name := moduleName,
       organization := "uk.gov.homeoffice",
       version := "1.0-SNAPSHOT",
       scalaVersion := "2.11.6",
@@ -20,11 +22,11 @@ object Build extends Build {
         "-Yrangepos",
         "-Yrepl-sync"),
       resolvers ++= Seq(
+        "Artifactory Snapshot Realm" at "http://artifactory.registered-traveller.homeoffice.gov.uk/artifactory/libs-snapshot-local/",
         "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
         "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
         "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
-        "Kamon Repository" at "http://repo.kamon.io",
-        "Artifactory Snapshot Realm" at "http://artifactory.registered-traveller.homeoffice.gov.uk/artifactory/libs-snapshot-local/"),
+        "Kamon Repository" at "http://repo.kamon.io"),
       libraryDependencies ++= Seq(
         "com.typesafe" % "config" % "1.2.1" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),

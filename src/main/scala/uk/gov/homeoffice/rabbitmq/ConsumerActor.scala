@@ -11,8 +11,9 @@ import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
 import uk.gov.homeoffice.json.JsonError
+import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 
-trait ConsumerActor extends Actor with ActorLogging {
+trait ConsumerActor extends Actor with ActorLogging with Publisher {
   this: Consumer[_] with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
@@ -35,17 +36,20 @@ trait ConsumerActor extends Actor with ActorLogging {
 
   override def postStop() = {
     super.postStop()
-    try channel.close() catch { case t: Throwable => }
+    try channel.close() catch { case t: Throwable => log.error(t.getMessage) }
   }
 
   private def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Unit = Try {
-    val result = parseBody(rabbitMessage.body.utf8String).fold(validJson => consume(validJson),
-      invalidJson => Future.successful(new Bad(invalidJson)))
+    val result = parseBody(rabbitMessage.body.utf8String).fold(
+      validJson => consume(validJson),
+      invalidJson => Future.successful(new Bad(invalidJson))
+    )
+
     result collect {
       case Good(_) =>
         log.debug("GOOD processing")
         rabbitMessage.ack()
-        sender ! "ok"
+        sender ! OK
 
       case Bad(j @ JsonError(_, _, _, fatalException)) =>
         if (fatalException) {
@@ -53,23 +57,21 @@ trait ConsumerActor extends Actor with ActorLogging {
           rabbitMessage.nack()
         } else {
           log.error(s"BAD processing: $j")
-          publishError(compact(render(j.json merge JObject("error" -> JString(j.error)))).getBytes)
+          publish(j)
           rabbitMessage.ack()
         }
 
-        sender ! "ko"
+        sender ! KO
     }
   } getOrElse {
     val unknown = rabbitMessage.body.utf8String
     log.error(s"UKNOWN MESSAGE TYPE WITH CONTENT: $unknown")
-    publishError(compact(render(JObject("data" -> JString(unknown)) merge JObject("error" -> JString("Unknown data")))).getBytes)
+    publish(JsonError(JObject("data" -> JString(unknown)), "Unknown data"))
     rabbitMessage.ack()
-    sender ! "ko"
+    sender ! KO
   }
 
   def parseBody(body: String): JValue Or JsonError = Try {
     new Good(parse(body))
   } getOrElse new Bad(JsonError(json = JObject("data" -> JString(body)), error = "Invalid JSON format"))
-
-  private def publishError(data: Array[Byte]) = channel.basicPublish("", errorQueue(channel), MessageProperties.PERSISTENT_BASIC, data)
 }
