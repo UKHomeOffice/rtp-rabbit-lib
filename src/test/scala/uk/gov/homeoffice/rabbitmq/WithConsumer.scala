@@ -10,7 +10,7 @@ trait WithConsumer extends WithQueue {
   this: WithQueue =>
 
   override def queue(channel: Channel): String = {
-    def consumer = new DefaultConsumer(channel) {
+    def consumer(consume: Array[Byte] => Any) = new DefaultConsumer(channel) {
       override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
         super.handleDelivery(consumerTag, envelope, properties, body)
         consume(body) // Note - Not passing in "consumerTag", "envelope" and "properties" as seems unnecessary and avoids AMQP dependency for client code.
@@ -19,8 +19,8 @@ trait WithConsumer extends WithQueue {
 
     val queueName = super.queue(channel)
 
-    channel.basicConsume(queueName, true, consumer)
-    channel.basicConsume(s"$queueName-error", true, consumer)
+    channel.basicConsume(queueName, true, consumer(consume))
+    channel.basicConsume(s"$queueName-error", true, consumer(consumeError))
 
     queueName
   }
