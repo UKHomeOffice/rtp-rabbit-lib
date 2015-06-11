@@ -27,12 +27,12 @@ trait Publisher {
     promise.future
   }
 
-  def publish(e: JsonError): Future[JsonError Or JsonError] = {
-    val promise = Promise[JsonError Or JsonError]()
+  def publish(e: JsonError): Future[JsonError] = {
+    val promise = Promise[JsonError]()
 
-    def ack = promise success Good(e)
+    def ack = promise success e
 
-    def nack = promise success Bad(e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}"))
+    def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
 
     def error(t: Throwable) = promise failure new RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
 
