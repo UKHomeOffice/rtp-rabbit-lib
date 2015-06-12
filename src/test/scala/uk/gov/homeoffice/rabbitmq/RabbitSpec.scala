@@ -11,13 +11,13 @@ trait RabbitSpec extends Rabbit with AfterEach {
 
   override lazy val connection: Connection = {
     val conn = Rabbit.createConnection
-    println(s"+ Opened Rabbit connection: $conn (${conn.hashCode()})")
+    println(s"+ Opened Rabbit connection $conn - hashCode ${conn.hashCode()}")
     conn
   }
 
   protected def after = {
     connection.close()
-    println(s"x Closed Rabbit connection: $connection (hashCode: ${connection.hashCode()})")
+    println(s"x Closed Rabbit connection $connection - hashCode ${connection.hashCode()}")
   }
 
   /**
