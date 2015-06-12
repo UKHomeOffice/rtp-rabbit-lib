@@ -22,6 +22,12 @@ trait WithConsumer extends WithQueue {
     queueName
   }
 
+  def consume(body: Array[Byte]): Any
+}
+
+trait WithErrorConsumer extends WithQueue {
+  this: WithConsumer =>
+
   override def errorQueue(channel: Channel): String = {
     val consumer = new DefaultConsumer(channel) {
       override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
@@ -35,7 +41,5 @@ trait WithConsumer extends WithQueue {
     errorQueueName
   }
 
-  def consume(body: Array[Byte]): Any
-
-  def consumeError(body: Array[Byte]): Any = ()
+  def consumeError(body: Array[Byte]): Any
 }
