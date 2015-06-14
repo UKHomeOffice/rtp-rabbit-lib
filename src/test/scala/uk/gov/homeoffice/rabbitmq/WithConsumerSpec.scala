@@ -22,8 +22,8 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
       publisher.publish(JsonError(JObject(), "Error"))
       publisher.publish(JObject())
 
-      validMessageConsumed.future must beEqualTo(true).awaitFor(10 seconds)
-      errorMessageConsumed.future must beEqualTo(true).awaitFor(10 seconds)
+      validMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
     }
 
     "consume valid message" in {
@@ -35,7 +35,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
 
       publisher.publish(JObject())
 
-      validMessageConsumed.future must beEqualTo(true).awaitFor(10 seconds)
+      validMessageConsumed.future must beTrue.awaitFor(10 seconds)
     }
 
     "consume error message" in {
@@ -49,7 +49,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
 
       publisher.publish(JsonError(JObject(), "Error"))
 
-      errorMessageConsumed.future must beEqualTo(true).awaitFor(10 seconds)
+      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
     }
   }
 }

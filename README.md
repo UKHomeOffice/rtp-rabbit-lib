@@ -1,6 +1,6 @@
-Rabbit - Scala publish/subscribe for RabbitMQ
+Scala publish/subscribe JSON API for RabbitMQ
 =============================================
-Scala general functionality to interface with RabbitMQ (originally written for Registered Traveller UK)
+Scala general functionality to interface with RabbitMQ via JSON protocol.
 
 Project built with the following (main) technologies:
 
@@ -8,11 +8,17 @@ Project built with the following (main) technologies:
 
 - SBT
 
+- Akka
+
 - RabbitMQ
+
+- Specs2
 
 Introduction
 ------------
 TODO
+
+Include: installing RabbitMQ
 
 Build and Deploy
 ----------------
@@ -41,13 +47,15 @@ To publish the jar to artifactory you will need to
 
 > activator publish
 
+Note that initially this project refers to some libraries held within a private Artifactory. However, those libraries have been open sourced under https://github.com/UKHomeOffice.
+
 Example Usage
 -------------
 ```scala
   object ExampleBoot extends App with HasConfig {
     implicit val json4sFormats = DefaultFormats
   
-    val system = ActorSystem("importer-actor-system", config)
+    val system = ActorSystem("example-actor-system", config)
   
     // Consume
     system.actorOf(Props(new ConsumerActor with Consumer[String] with ExampleQueue with Rabbit {
@@ -64,7 +72,7 @@ Example Usage
   }
   
   trait ExampleQueue extends Queue {
-    def queueName = "rabb-it-example"
+    def queueName = "rabbit-example"
   }
 ```
 
@@ -78,4 +86,40 @@ Noting that a "configuration" such as application.conf must be provided e.g.
   
     automatic-recovery = on
   }
+```
+
+Writing specs (tests) against Rabbit is very easy (integration tests are so easy, they can be regarded as unit tests). Upon running the specs, the SBT build will attempt to start Rabbit (but it is easier to start Rabbit yourself and keep it running, as all specs will create unique, temporary queues, which are removed when examples have finished, and all connections are automatically closed, closing all Rabbit channels).
+
+A spec that consumes valid and error messages, upon publication of said messages. All the plumbing is handled automatically, allowing you to concentrate on writing specs to build your API and subsequently your code.
+
+```scala
+class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpec {
+  "Consumer" should {
+    "consume valid message" in {
+      val validMessageConsumed = Promise[Boolean]()
+
+      val publisher = new Publisher with WithConsumer with WithQueue with WithRabbit {
+        def consume(body: Array[Byte]) = validMessageConsumed success true
+      }
+
+      publisher.publish(JObject())
+
+      validMessageConsumed.future must beTrue.awaitFor(10 seconds)
+    }
+
+    "consume error message" in {
+      val errorMessageConsumed = Promise[Boolean]()
+
+      val publisher = new Publisher with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
+        def consume(body: Array[Byte]) = ko
+
+        def consumeError(body: Array[Byte]) = errorMessageConsumed success true
+      }
+
+      publisher.publish(JsonError(JObject(), "Error"))
+
+      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
+    }
+  }
+}
 ```
