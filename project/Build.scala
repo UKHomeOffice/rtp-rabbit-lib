@@ -11,7 +11,7 @@ object Build extends Build {
       name := moduleName,
       organization := "uk.gov.homeoffice",
       version := "1.0-SNAPSHOT",
-      scalaVersion := "2.11.6",
+      scalaVersion := "2.11.7",
       scalacOptions ++= Seq(
         "-feature",
         "-language:implicitConversions",
@@ -41,25 +41,31 @@ object Build extends Build {
   def existsLocallyAndNotOnJenkins(filePath: String) = {
     new java.io.File(filePath).exists && !new java.io.File(filePath + "/nextBuildNumber").exists()
   }
+
   def checkFileExistsInADirectoryBelow(filePath: String, times: Int = 0): String = {
     if (times > 3 || existsLocallyAndNotOnJenkins(filePath)) filePath
-    else checkFileExistsInADirectoryBelow("../"+filePath, times+1)
+    else checkFileExistsInADirectoryBelow("../" + filePath, times + 1)
   }
+
   val rtpiolibPath = checkFileExistsInADirectoryBelow("../rtp-io-lib")
+
   lazy val root = if (existsLocallyAndNotOnJenkins(rtpiolibPath)) {
     println("=====================")
     println("Build Locally rabbit ")
     println("=====================")
-    val actualRtpIoPath = "../rtp-io-lib" //NEEDS TO BE THIS PATH
-    val rtpiolib =ProjectRef(file(actualRtpIoPath), "rtp-io-lib")
+
+    val actualRtpIoPath = "../rtp-io-lib" // NEEDS TO BE THIS PATH
+    val rtpiolib = ProjectRef(file(actualRtpIoPath), "rtp-io-lib")
     rabbit.dependsOn(rtpiolib)
   } else {
     println("=====================")
     println("Build Jenkins rabbit ")
     println("=====================")
+
     rabbit.settings(
       libraryDependencies ++= Seq(
         "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources()
-      ))
+      )
+    )
   }
 }
