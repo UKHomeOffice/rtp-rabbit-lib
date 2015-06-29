@@ -28,7 +28,7 @@ object Build extends Build {
         "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
         "Kamon Repository" at "http://repo.kamon.io"),
       libraryDependencies ++= Seq(
-        "com.typesafe" % "config" % "1.2.1" withSources(),
+        "com.typesafe" % "config" % "1.3.0" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.3" withSources(),
         "org.scalactic" %% "scalactic" % "2.2.4" withSources()
