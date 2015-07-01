@@ -28,6 +28,9 @@ object Build extends Build {
         "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
         "Kamon Repository" at "http://repo.kamon.io"),
       libraryDependencies ++= Seq(
+        "org.clapper" %% "grizzled-slf4j" % "1.0.2",
+        "ch.qos.logback" % "logback-core" % "1.1.3",
+        "ch.qos.logback" % "logback-classic" % "1.1.3",
         "com.typesafe" % "config" % "1.3.0" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.3" withSources(),

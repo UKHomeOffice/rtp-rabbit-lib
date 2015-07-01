@@ -1,23 +1,24 @@
 package uk.gov.homeoffice.rabbitmq
 
 import com.rabbitmq.client.Connection
+import grizzled.slf4j.Logging
 import org.specs2.mutable.Specification
 import org.specs2.specification.AfterEach
 
-trait RabbitSpec extends Rabbit with AfterEach {
+trait RabbitSpec extends Rabbit with AfterEach with Logging {
   self: Specification =>
 
   isolated
 
   override lazy val connection: Connection = {
     val conn = Rabbit.createConnection
-    println(s"+ Opened Rabbit connection $conn - hashCode ${conn.hashCode()}")
+    logger.debug(s"+ Opened Rabbit connection $conn - hashCode ${conn.hashCode()}")
     conn
   }
 
   protected def after = {
     connection.close()
-    println(s"x Closed Rabbit connection $connection - hashCode ${connection.hashCode()}")
+    logger.debug(s"x Closed Rabbit connection $connection - hashCode ${connection.hashCode()}")
   }
 
   /**
