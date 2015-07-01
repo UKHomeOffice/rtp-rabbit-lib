@@ -37,9 +37,7 @@ object Build extends Build {
         "org.scalactic" %% "scalactic" % "2.2.4" withSources()
       ),
       libraryDependencies ++= Seq(
-        "org.specs2" %% "specs2-core" % "3.6.2" % "test, it" withSources(),
-        "org.specs2" %% "specs2-mock" % "3.6.2" % "test, it" withSources(),
-        "org.specs2" %% "specs2-matcher-extra" % "3.6.2" % "test, it" withSources()))
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % "test, it" classifier "tests" withSources()))
 
   def existsLocallyAndNotOnJenkins(filePath: String) = {
     new java.io.File(filePath).exists && !new java.io.File(filePath + "/nextBuildNumber").exists()
