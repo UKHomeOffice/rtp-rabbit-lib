@@ -1,13 +1,12 @@
 package uk.gov.homeoffice.rabbitmq
 
-import grizzled.slf4j.Logging
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import akka.actor.{ActorSystem, Props}
 import org.json4s.JsonAST.{JObject, JString}
 import org.json4s.{DefaultFormats, JValue}
 import org.scalactic.Good
+import grizzled.slf4j.Logging
 import uk.gov.homeoffice.HasConfig
 
 /**

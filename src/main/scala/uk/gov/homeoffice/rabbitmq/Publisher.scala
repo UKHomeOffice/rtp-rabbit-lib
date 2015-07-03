@@ -1,7 +1,5 @@
 package uk.gov.homeoffice.rabbitmq
 
-import grizzled.slf4j.Logging
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import org.json4s.JValue
@@ -9,6 +7,7 @@ import org.json4s.JsonAST.{JObject, JString}
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client.{Channel, ConfirmListener, MessageProperties}
+import grizzled.slf4j.Logging
 import uk.gov.homeoffice.json.JsonError
 
 trait Publisher extends Logging {

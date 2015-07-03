@@ -34,7 +34,7 @@ object Build extends Build {
         "com.typesafe" % "config" % "1.3.0" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.3" withSources(),
-        "org.scalactic" %% "scalactic" % "2.2.4" withSources()
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" withSources()
       ),
       libraryDependencies ++= Seq(
         "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % "test, it" classifier "tests" withSources()))
