@@ -5,7 +5,7 @@ import grizzled.slf4j.Logging
 import org.specs2.mutable.Specification
 import org.specs2.specification.AfterEach
 
-trait RabbitSpec extends Rabbit with AfterEach with Logging {
+trait RabbitSpecification extends Rabbit with AfterEach with Logging {
   self: Specification =>
 
   isolated

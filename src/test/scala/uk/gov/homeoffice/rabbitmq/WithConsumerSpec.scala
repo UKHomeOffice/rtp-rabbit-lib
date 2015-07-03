@@ -7,7 +7,7 @@ import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
 import uk.gov.homeoffice.json.JsonError
 
-class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpec {
+class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification {
   "Consumer" should {
     "consume valid and error message" in {
       val validMessageConsumed = Promise[Boolean]()
