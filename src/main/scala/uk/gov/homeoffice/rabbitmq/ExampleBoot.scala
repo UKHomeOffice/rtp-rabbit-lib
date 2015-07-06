@@ -8,6 +8,7 @@ import org.json4s.{DefaultFormats, JValue}
 import org.scalactic.Good
 import grizzled.slf4j.Logging
 import uk.gov.homeoffice.HasConfig
+import uk.gov.homeoffice.json.NoJsonValidator
 
 /**
  * This example of booting an application to publish to RabbitMQ and consume, must have a local RabbitMQ running on default port of 5672.
@@ -19,7 +20,7 @@ object ExampleBoot extends App with HasConfig with Logging {
   val system = ActorSystem("rabbit-actor-system", config)
 
   // Consume
-  system.actorOf(Props(new ConsumerActor with Consumer[String] with ExampleQueue with Rabbit {
+  system.actorOf(Props(new ConsumerActor with Consumer[String] with NoJsonValidator with ExampleQueue with Rabbit {
     def consume(json: JValue) = Future {
       val message = (json \ "message").extract[String]
       debug(s"Congratulations, consumed message '$message'")
@@ -28,7 +29,7 @@ object ExampleBoot extends App with HasConfig with Logging {
   }))
 
   // Publish
-  val publisher = new Publisher with ExampleQueue with Rabbit
+  val publisher = new Publisher with NoJsonValidator with ExampleQueue with Rabbit
   publisher.publish(JObject("message" -> JString("hello world!")))
 }
 

@@ -33,40 +33,42 @@ object Build extends Build {
         "ch.qos.logback" % "logback-classic" % "1.1.3",
         "com.typesafe" % "config" % "1.3.0" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
-        "com.rabbitmq" % "amqp-client" % "3.5.3" withSources(),
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" withSources()
+        "com.rabbitmq" % "amqp-client" % "3.5.3" withSources()
       ),
       libraryDependencies ++= Seq(
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % "test, it" classifier "tests" withSources()))
+        "com.typesafe.akka" %% "akka-testkit" % "2.3.9" % Test withSources()))
 
-  def existsLocallyAndNotOnJenkins(filePath: String) = {
-    new java.io.File(filePath).exists && !new java.io.File(filePath + "/nextBuildNumber").exists()
-  }
+  val testPath = "../rtp-test-lib"
+  val ioPath = "../rtp-io-lib"
+  val akkaPath = "../rtp-akka-lib"
 
-  def checkFileExistsInADirectoryBelow(filePath: String, times: Int = 0): String = {
-    if (times > 3 || existsLocallyAndNotOnJenkins(filePath)) filePath
-    else checkFileExistsInADirectoryBelow("../" + filePath, times + 1)
-  }
-
-  val rtpiolibPath = checkFileExistsInADirectoryBelow("../rtp-io-lib")
-
-  lazy val root = if (existsLocallyAndNotOnJenkins(rtpiolibPath)) {
+  val root = if (new java.io.File(testPath).exists && sys.props.get("jenkins").isEmpty) {
     println("=====================")
-    println("Build Locally rabbit ")
+    println("Build Locally domain ")
     println("=====================")
 
-    val actualRtpIoPath = "../rtp-io-lib" // NEEDS TO BE THIS PATH
-    val rtpiolib = ProjectRef(file(actualRtpIoPath), "rtp-io-lib")
-    rabbit.dependsOn(rtpiolib)
+    val testLib = ProjectRef(file(testPath), "rtp-test-lib")
+    rabbit.dependsOn(testLib % "test->test;compile->compile")
+
+    val ioLib = ProjectRef(file(ioPath), "rtp-io-lib")
+    rabbit.dependsOn(ioLib % "test->test;compile->compile")
+
+    val akkaLib = ProjectRef(file(akkaPath), "rtp-akka-lib")
+    rabbit.dependsOn(akkaLib % "test->test;compile->compile")
+
   } else {
-    println("=====================")
-    println("Build Jenkins rabbit ")
-    println("=====================")
+    println("========================")
+    println("Build on Jenkins domain ")
+    println("========================")
 
     rabbit.settings(
       libraryDependencies ++= Seq(
-        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources()
-      )
-    )
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" withSources(),
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources(),
+        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources(),
+        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources(),
+        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" withSources(),
+        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources() excludeAll ExclusionRule(organization = "org.specs2")
+      ))
   }
 }

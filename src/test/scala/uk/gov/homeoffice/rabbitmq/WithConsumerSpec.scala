@@ -5,7 +5,7 @@ import scala.concurrent.duration._
 import org.json4s.JsonAST.JObject
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
-import uk.gov.homeoffice.json.JsonError
+import uk.gov.homeoffice.json.{NoJsonValidator, JsonError}
 
 class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification {
   "Consumer" should {
@@ -13,8 +13,8 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
       val validMessageConsumed = Promise[Boolean]()
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = validMessageConsumed success true
+      val publisher = new Publisher with NoJsonValidator with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
+        override def consume(body: Array[Byte]) = validMessageConsumed success true
 
         def consumeError(body: Array[Byte]) = errorMessageConsumed success true
       }
@@ -29,7 +29,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
     "consume valid message" in {
       val validMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with WithConsumer with WithQueue with WithRabbit {
+      val publisher = new Publisher with NoJsonValidator with WithConsumer with WithQueue with WithRabbit {
         def consume(body: Array[Byte]) = validMessageConsumed success true
       }
 
@@ -41,9 +41,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
     "consume error message" in {
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = ko
-
+      val publisher = new Publisher with NoJsonValidator with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
         def consumeError(body: Array[Byte]) = errorMessageConsumed success true
       }
 

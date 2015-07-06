@@ -1,7 +1,6 @@
 package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
 import scala.util.Try
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.event.LoggingReceive
@@ -10,11 +9,11 @@ import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
-import uk.gov.homeoffice.json.JsonError
+import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 
 trait ConsumerActor extends Actor with ActorLogging with Publisher {
-  this: Consumer[_] with Queue with Rabbit =>
+  this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
 
@@ -39,39 +38,47 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
     try channel.close() catch { case t: Throwable => log.error(t.getMessage) }
   }
 
-  private def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Unit = Try {
-    val result = parseBody(rabbitMessage.body.utf8String).fold(
-      validJson => consume(validJson),
-      invalidJson => Future.successful(new Bad(invalidJson))
-    )
-
-    result collect {
-      case Good(_) =>
-        log.debug("GOOD processing")
-        rabbitMessage.ack()
-        sender ! OK
-
-      case Bad(j @ JsonError(_, _, _, fatalException)) =>
+  // TODO This function needs another iteration as I'm not happy with this first attempt of the implementation!!!
+  private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Unit = {
+    val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
+      case b @ Bad(e @ JsonError(_, _, _, fatalException)) =>
         if (fatalException) {
-          log.error(s"NACKing fatal exception while processing: $j")
+          log.error(s"NACKing fatal exception while processing: $e")
           rabbitMessage.nack()
         } else {
-          log.error(s"BAD processing: $j")
-          publish(j)
+          log.error(s"BAD processing: $e")
+          publish(e)
           rabbitMessage.ack()
         }
 
         sender ! KO
+        b
     }
-  } getOrElse {
-    val unknown = rabbitMessage.body.utf8String
-    log.error(s"UKNOWN MESSAGE TYPE WITH CONTENT: $unknown")
-    publish(JsonError(JObject("data" -> JString(unknown)), "Unknown data"))
-    rabbitMessage.ack()
-    sender ! KO
+
+    val validateJson: PartialFunction[JValue Or JsonError, JValue Or JsonError] = {
+      case Good(json) => validate(json)
+    }
+
+    val consumeJson: PartialFunction[JValue Or JsonError, Unit] = {
+      case Good(json) =>
+        consume(json).collect {
+          case Good(_) =>
+            log.debug("GOOD processing")
+            rabbitMessage.ack()
+            sender ! OK
+
+          case b @ Bad(_) =>
+            jsonError(b)
+        }
+
+      case b @ Bad(_) =>
+        jsonError(b)
+    }
+
+    (jsonError orElse (validateJson andThen consumeJson))(parseBody(rabbitMessage.body.utf8String))
   }
 
-  def parseBody(body: String): JValue Or JsonError = Try {
+  private[rabbitmq] def parseBody(body: String): JValue Or JsonError = Try {
     new Good(parse(body))
   } getOrElse new Bad(JsonError(json = JObject("data" -> JString(body)), error = "Invalid JSON format"))
 }
