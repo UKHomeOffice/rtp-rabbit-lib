@@ -7,13 +7,13 @@ import akka.util.ByteString
 import org.json4s.JValue
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-import org.scalactic.{Bad, Good}
+import org.scalactic.Good
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 import com.rabbitmq.client.Channel
 import uk.gov.homeoffice.akka.ActorSystemContext
-import uk.gov.homeoffice.json.{JsonError, JsonSchema, JsonValidator}
+import uk.gov.homeoffice.json.{JsonSchema, JsonValidator}
 
 class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification with Mockito {
   trait TestJsonValidator extends JsonValidator {
@@ -38,7 +38,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "consume a message that is not JSON and republish it onto an associated error queue" in new ActorSystemContext {
       val invalidDataConsumed = Promise[Boolean]()
 
-      val actor = TestActorRef(new ConsumerActor with WithConsumer with WithErrorConsumer with TestJsonValidator with WithQueue with WithRabbit {
+      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
         def consumeError(body: Array[Byte]) = invalidDataConsumed success true
       })
 
@@ -65,7 +65,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "consume invalid JSON i.e. JSON which does not match a given JSON schema and so republish the JSON error onto an associated error queue" in new ActorSystemContext {
       val invalidJsonConsumed = Promise[Boolean]()
 
-      val actor = TestActorRef(new ConsumerActor with WithConsumer with WithErrorConsumer with TestJsonValidator with WithQueue with WithRabbit {
+      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
         def consumeError(body: Array[Byte]) = invalidJsonConsumed success true
       })
 
@@ -77,11 +77,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "fail to consume valid JSON and republish it onto associated error queue" in new ActorSystemContext {
       val errorConsumed = Promise[Boolean]()
 
-      val actor = TestActorRef(new ConsumerActor with WithConsumer with WithErrorConsumer with TestJsonValidator with WithQueue with WithRabbit {
-        override def consume(json: JValue) = {
-          Future.successful(Bad(JsonError(error = "whoops")))
-        }
-
+      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
         def consumeError(body: Array[Byte]) = errorConsumed success true
       })
 

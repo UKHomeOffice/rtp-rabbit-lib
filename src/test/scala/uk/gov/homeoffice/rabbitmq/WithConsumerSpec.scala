@@ -41,7 +41,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
     "consume error message" in {
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with NoJsonValidator with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
+      val publisher = new Publisher with NoJsonValidator with WithErrorConsumer with WithQueue with WithRabbit {
         def consumeError(body: Array[Byte]) = errorMessageConsumed success true
       }
 

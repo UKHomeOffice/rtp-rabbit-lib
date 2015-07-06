@@ -47,7 +47,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "be published to Rabbit error queue when it does not conform to a given schema because of an extra field" in {
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with TestJsonValidator with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
+      val publisher = new Publisher with TestJsonValidator with WithErrorConsumer with WithQueue with WithRabbit {
         def consumeError(body: Array[Byte]) = {
           println(pretty(render(parse(new String(body)))))
           errorMessageConsumed success true
@@ -62,7 +62,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "be published to Rabbit error queue when it does not conform to a given schema because of a missing field" in {
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with TestJsonValidator with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
+      val publisher = new Publisher with TestJsonValidator with WithErrorConsumer with WithQueue with WithRabbit {
         def consumeError(body: Array[Byte]) = {
           println(pretty(render(parse(new String(body)))))
           errorMessageConsumed success true
