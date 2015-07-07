@@ -39,7 +39,7 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
   }
 
   // TODO This function needs another iteration as I'm not happy with this first attempt of the implementation!!!
-  private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Unit = {
+  private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Any = {
     val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
       case b @ Bad(e @ JsonError(_, _, _, fatalException)) =>
         if (fatalException) {

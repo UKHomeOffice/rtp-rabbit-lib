@@ -1,9 +1,9 @@
 package uk.gov.homeoffice.rabbitmq
 
-import com.rabbitmq.client.Connection
-import grizzled.slf4j.Logging
 import org.specs2.mutable.Specification
 import org.specs2.specification.AfterEach
+import com.rabbitmq.client.Connection
+import grizzled.slf4j.Logging
 
 trait RabbitSpecification extends Rabbit with AfterEach with Logging {
   self: Specification =>

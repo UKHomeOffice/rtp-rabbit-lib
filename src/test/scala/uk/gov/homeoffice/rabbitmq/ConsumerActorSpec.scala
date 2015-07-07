@@ -7,16 +7,16 @@ import akka.util.ByteString
 import org.json4s.JValue
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-import org.scalactic.Good
+import org.scalactic.{Bad, Good}
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 import com.rabbitmq.client.Channel
 import uk.gov.homeoffice.akka.ActorSystemContext
-import uk.gov.homeoffice.json.{JsonSchema, JsonValidator}
+import uk.gov.homeoffice.json.{JsonError, JsonSchema}
 
 class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification with Mockito {
-  trait TestJsonValidator extends JsonValidator {
+  trait JsonValidator extends uk.gov.homeoffice.json.JsonValidator {
     override val jsonSchema = JsonSchema(parse("""
     {
       "$schema": "http://json-schema.org/draft-04/schema#",
@@ -36,54 +36,68 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
   "Consumer Actor" should {
     "consume a message that is not JSON and republish it onto an associated error queue" in new ActorSystemContext {
-      val invalidDataConsumed = Promise[Boolean]()
+      val jsonErrorPromise = Promise[JsonError]()
 
-      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
-        def consumeError(body: Array[Byte]) = invalidDataConsumed success true
-      })
+      val actor = TestActorRef {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit with JsonErrorConsumer {
+          def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
+          def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
+        }
+      }
 
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString("unknown"), mock[Channel]), self)
 
-      invalidDataConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _, _) => ok
+      }.awaitFor(10 seconds)
     }
 
     "consume valid JSON and delegate to a consumer" in new ActorSystemContext {
-      val validJsonConsumed = Promise[Boolean]()
+      val jsonPromise = Promise[JValue]()
 
-      val actor = TestActorRef(new ConsumerActor with Consumer[Boolean] with TestJsonValidator with WithQueue with WithRabbit {
-        def consume(json: JValue) = {
-          validJsonConsumed success true
-          Future.successful(Good(true))
-        }
+      val actor = TestActorRef(new ConsumerActor with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
+        def consume(json: JValue) = (jsonPromise success json).future.map(Good(_))
       })
 
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("valid" -> "json"))), mock[Channel]), self)
 
-      validJsonConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonPromise.future must beLike[JValue] {
+        case _: JValue => ok
+      }.awaitFor(10 seconds)
     }
 
     "consume invalid JSON i.e. JSON which does not match a given JSON schema and so republish the JSON error onto an associated error queue" in new ActorSystemContext {
-      val invalidJsonConsumed = Promise[Boolean]()
+      val jsonErrorPromise = Promise[JsonError]()
 
-      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
-        def consumeError(body: Array[Byte]) = invalidJsonConsumed success true
-      })
+      val actor = TestActorRef { new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit
+                                 with JsonErrorConsumer {
+          def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
+          def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
+        }
+      }
 
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("error" -> "json"))), mock[Channel]), self)
 
-      invalidJsonConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _, _) => ok
+      }.awaitFor(10 seconds)
     }
 
     "fail to consume valid JSON and republish it onto associated error queue" in new ActorSystemContext {
-      val errorConsumed = Promise[Boolean]()
+      val jsonErrorPromise = Promise[JsonError]()
 
-      val actor = TestActorRef(new WithConsumerActor with TestJsonValidator with WithQueue with WithRabbit with WithErrorConsumer {
-        def consumeError(body: Array[Byte]) = errorConsumed success true
-      })
+      val actor = TestActorRef { new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit
+                                 with JsonErrorConsumer {
+          override def consume(json: JValue) = Future.successful(Bad(JsonError(error = "")))
+          def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
+        }
+      }
 
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("valid" -> "json"))), mock[Channel]), self)
 
-      errorConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _, _) => ok
+      }.awaitFor(10 seconds)
     }
   }
 }

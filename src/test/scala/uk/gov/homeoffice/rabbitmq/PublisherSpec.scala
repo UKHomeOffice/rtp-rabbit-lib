@@ -1,15 +1,16 @@
 package uk.gov.homeoffice.rabbitmq
 
-import scala.concurrent.duration._
 import scala.concurrent.Promise
+import scala.concurrent.duration._
+import org.json4s.JValue
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
-import uk.gov.homeoffice.json.{NoJsonValidator, JsonValidator, JsonSchema}
+import uk.gov.homeoffice.json.{JsonError, JsonSchema, NoJsonValidator}
 
 class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification {
-  trait TestJsonValidator extends JsonValidator {
+  trait JsonValidator extends uk.gov.homeoffice.json.JsonValidator {
     override val jsonSchema = JsonSchema(parse("""
     {
       "$schema": "http://json-schema.org/draft-04/schema#",
@@ -33,57 +34,63 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
 
   "JSON" should {
     "be published to Rabbit queue when it conforms to a given schema" in {
-      val validMessageConsumed = Promise[Boolean]()
+      val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with TestJsonValidator with WithConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = validMessageConsumed success true
+      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
+                      with JsonConsumer {
+        def json(json: JValue) = jsonPromise success json
       }
 
       publisher.publish(("valid" -> "json") ~ ("valid-again" -> "json"))
 
-      validMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonPromise.future must beLike[JValue] {
+        case _: JValue => ok
+      }.awaitFor(10 seconds)
     }
 
     "be published to Rabbit error queue when it does not conform to a given schema because of an extra field" in {
-      val errorMessageConsumed = Promise[Boolean]()
+      val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with TestJsonValidator with WithErrorConsumer with WithQueue with WithRabbit {
-        def consumeError(body: Array[Byte]) = {
-          println(pretty(render(parse(new String(body)))))
-          errorMessageConsumed success true
-        }
+      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
+                      with JsonErrorConsumer {
+        def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
       publisher.publish(("valid" -> "json") ~ ("valid-again" -> "json") ~ ("invalid" -> "json"))
 
-      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _, _) => ok
+      }.awaitFor(10 seconds)
     }
 
     "be published to Rabbit error queue when it does not conform to a given schema because of a missing field" in {
-      val errorMessageConsumed = Promise[Boolean]()
+      val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with TestJsonValidator with WithErrorConsumer with WithQueue with WithRabbit {
-        def consumeError(body: Array[Byte]) = {
-          println(pretty(render(parse(new String(body)))))
-          errorMessageConsumed success true
-        }
+      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
+                      with JsonErrorConsumer {
+        def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
       publisher.publish("valid" -> "json")
 
-      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _, _) => ok
+      }.awaitFor(10 seconds)
     }
 
     "not be validated when no JSON Validator is provided and so just publish onto Rabbit queue" in {
-      val messageConsumed = Promise[Boolean]()
+      val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with NoJsonValidator with WithConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = messageConsumed success true
+      val publisher = new Publisher with NoJsonValidator with WithQueue with WithRabbit
+                      with JsonConsumer {
+        def json(json: JValue) = jsonPromise success json
       }
 
       publisher.publish("whatever" -> "json")
 
-      messageConsumed.future must beTrue.awaitFor(10 seconds)
+      jsonPromise.future must beLike[JValue] {
+        case _: JValue => ok
+      }.awaitFor(10 seconds)
     }
   }
 }
