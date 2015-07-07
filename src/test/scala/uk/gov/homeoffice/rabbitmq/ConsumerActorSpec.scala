@@ -39,7 +39,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit with JsonErrorConsumer {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -69,8 +69,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "consume invalid JSON i.e. JSON which does not match a given JSON schema and so republish the JSON error onto an associated error queue" in new ActorSystemContext {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val actor = TestActorRef { new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit
-                                 with JsonErrorConsumer {
+      val actor = TestActorRef {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -86,8 +86,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "fail to consume valid JSON and republish it onto associated error queue" in new ActorSystemContext {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val actor = TestActorRef { new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue with WithRabbit
-                                 with JsonErrorConsumer {
+      val actor = TestActorRef {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           override def consume(json: JValue) = Future.successful(Bad(JsonError(error = "")))
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }

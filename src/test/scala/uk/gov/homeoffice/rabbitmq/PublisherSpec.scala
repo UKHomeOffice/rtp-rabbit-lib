@@ -36,8 +36,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "be published to Rabbit queue when it conforms to a given schema" in {
       val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
-                      with JsonConsumer {
+      val publisher = new Publisher with JsonValidator with WithQueue.Consumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
       }
 
@@ -51,8 +50,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "be published to Rabbit error queue when it does not conform to a given schema because of an extra field" in {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
-                      with JsonErrorConsumer {
+      val publisher = new Publisher with JsonValidator with WithQueue.ErrorConsumer with WithRabbit {
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
@@ -66,8 +64,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "be published to Rabbit error queue when it does not conform to a given schema because of a missing field" in {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with JsonValidator with WithQueue with WithRabbit
-                      with JsonErrorConsumer {
+      val publisher = new Publisher with JsonValidator with WithQueue.ErrorConsumer with WithRabbit {
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
@@ -81,8 +78,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
     "not be validated when no JSON Validator is provided and so just publish onto Rabbit queue" in {
       val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue with WithRabbit
-                      with JsonConsumer {
+      val publisher = new Publisher with NoJsonValidator with WithQueue.Consumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
       }
 

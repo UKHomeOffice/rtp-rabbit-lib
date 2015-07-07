@@ -2,8 +2,10 @@ package uk.gov.homeoffice.rabbitmq
 
 import java.util.UUID
 import scala.collection.JavaConversions._
-import com.rabbitmq.client.Channel
-import uk.gov.homeoffice.json.JsonFormats
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import com.rabbitmq.client.{AMQP, Envelope, DefaultConsumer, Channel}
+import uk.gov.homeoffice.json.{JsonError, JsonFormats}
 
 /**
  * Not nice to name a trait prefixed by "With" as it will probably mixed in using "with".
@@ -16,5 +18,44 @@ trait WithQueue extends Queue with JsonFormats {
     channel.queueDeclare(queueName, /*durable*/ false, /*exclusive*/ true, /*autoDelete*/ true, /*arguments*/ Map("passive" -> "false")).getQueue
 
   override def errorQueue(channel: Channel): String =
-    channel.queueDeclare(errorQueueName, /*durable*/false, /*exclusive*/true, /*autoDelete*/true, /*arguments*/Map("passive" -> "false")).getQueue
+    channel.queueDeclare(errorQueueName, /*durable*/ false, /*exclusive*/ true, /*autoDelete*/ true, /*arguments*/ Map("passive" -> "false")).getQueue
+}
+
+object WithQueue {
+  trait Consumer extends WithQueue {
+    override def queue(channel: Channel): String = {
+      val consumer = new DefaultConsumer(channel) {
+        override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
+          super.handleDelivery(consumerTag, envelope, properties, body)
+          json(parse(new String(body)))
+        }
+      }
+
+      channel.basicConsume(super.queue(channel), true, consumer)
+
+      queueName
+    }
+
+    def json(json: JValue): Any
+  }
+
+  trait ErrorConsumer extends WithQueue {
+    override def errorQueue(channel: Channel): String = {
+      val consumer = new DefaultConsumer(channel) {
+        override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
+          super.handleDelivery(consumerTag, envelope, properties, body)
+          jsonError {
+            val extractedJsonError = parse(new String(body))
+            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extract[String])
+          }
+        }
+      }
+
+      channel.basicConsume(super.errorQueue(channel), true, consumer)
+
+      errorQueueName
+    }
+
+    def jsonError(jsonError: JsonError): Any
+  }
 }

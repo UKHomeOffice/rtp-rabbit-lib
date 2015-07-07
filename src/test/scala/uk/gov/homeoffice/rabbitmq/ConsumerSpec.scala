@@ -14,8 +14,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
       val jsonPromise = Promise[JValue]()
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue with WithRabbit
-                      with JsonConsumer with JsonErrorConsumer {
+      val publisher = new Publisher with NoJsonValidator with WithQueue.Consumer with WithQueue.ErrorConsumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
@@ -35,8 +34,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
     "consume valid message" in {
       val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue with WithRabbit
-                      with JsonConsumer {
+      val publisher = new Publisher with NoJsonValidator with WithQueue.Consumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
       }
 
@@ -50,8 +48,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
     "consume error message" in {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue with WithRabbit
-                      with JsonErrorConsumer {
+      val publisher = new Publisher with NoJsonValidator with WithQueue.ErrorConsumer with WithRabbit {
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
