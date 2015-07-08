@@ -13,3 +13,6 @@ dist
 /.settings
 *.lock
 public
+target
+project/target
+project/project
