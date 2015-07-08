@@ -41,7 +41,7 @@ trait Publisher extends Logging {
 
     val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
 
-    debug(s"Publishing to error queue $errorQueueName ${pretty(render(jsonWithError))}")
+    info(s"Publishing to error queue $errorQueueName ${pretty(render(jsonWithError))}")
     publish(jsonWithError, errorQueue, ack, nack, error)
 
     promise.future
@@ -58,7 +58,7 @@ trait Publisher extends Logging {
         def handleNack(deliveryTag: Long, multiple: Boolean) = nack
       })
 
-      debug(s"Publishing to $connection:${queue(channel)} ${pretty(render(json))}")
+      info(s"Publishing to $connection:${queue(channel)} ${pretty(render(json))}")
       channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, compact(render(json)).getBytes)
     } catch {
       case t: Throwable =>
