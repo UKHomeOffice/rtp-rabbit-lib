@@ -24,7 +24,7 @@ trait WithQueue extends Queue with JsonFormats {
 object WithQueue {
   trait Consumer extends WithQueue with JsonFormats {
     override def queue(channel: Channel): String = {
-      val consumer = new DefaultConsumer(channel) {
+      val consumer = new DefaultConsumer(channel) with JsonFormats {
         override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
           super.handleDelivery(consumerTag, envelope, properties, body)
           json(parse(new String(body)))
@@ -41,9 +41,10 @@ object WithQueue {
 
   trait ErrorConsumer extends WithQueue with JsonFormats {
     override def errorQueue(channel: Channel): String = {
-      val consumer = new DefaultConsumer(channel) {
+      val consumer = new DefaultConsumer(channel) with JsonFormats {
         override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
           super.handleDelivery(consumerTag, envelope, properties, body)
+
           jsonError {
             val extractedJsonError = parse(new String(body))
             JsonError(extractedJsonError, error = (extractedJsonError \ "error").extract[String])
