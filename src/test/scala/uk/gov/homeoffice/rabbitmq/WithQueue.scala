@@ -22,7 +22,7 @@ trait WithQueue extends Queue with JsonFormats {
 }
 
 object WithQueue {
-  trait Consumer extends WithQueue {
+  trait Consumer extends WithQueue with JsonFormats {
     override def queue(channel: Channel): String = {
       val consumer = new DefaultConsumer(channel) {
         override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
@@ -39,7 +39,7 @@ object WithQueue {
     def json(json: JValue): Any
   }
 
-  trait ErrorConsumer extends WithQueue {
+  trait ErrorConsumer extends WithQueue with JsonFormats {
     override def errorQueue(channel: Channel): String = {
       val consumer = new DefaultConsumer(channel) {
         override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
