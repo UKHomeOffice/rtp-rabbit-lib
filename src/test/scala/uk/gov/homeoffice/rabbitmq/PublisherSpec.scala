@@ -57,7 +57,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
       publisher.publish(("valid" -> "json") ~ ("valid-again" -> "json") ~ ("invalid" -> "json"))
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
 
@@ -71,7 +71,7 @@ class PublisherSpec(implicit ev: ExecutionEnv) extends Specification with Rabbit
       publisher.publish("valid" -> "json")
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
 

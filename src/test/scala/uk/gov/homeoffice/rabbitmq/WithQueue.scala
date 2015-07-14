@@ -5,14 +5,13 @@ import scala.collection.JavaConversions._
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import com.rabbitmq.client.{AMQP, Channel, DefaultConsumer, Envelope}
-import uk.gov.homeoffice.json.JsonError
-import uk.gov.homeoffice.json.JsonFormats._
+import uk.gov.homeoffice.json.{JsonFormats, JsonError}
 
 /**
  * Not nice to name a trait prefixed by "With" as it will probably mixed in using "with".
  * However, this seems to be a naming idiom (certainly from Play) to distinguish this trait that is only for testing as opposed to say main code named "Queue"
  */
-trait WithQueue extends Queue {
+trait WithQueue extends Queue with JsonFormats {
   override val queueName: String = UUID.randomUUID().toString
 
   override def queue(channel: Channel): String =

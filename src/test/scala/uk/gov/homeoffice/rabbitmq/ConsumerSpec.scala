@@ -27,7 +27,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
       }.awaitFor(10 seconds)
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
 
@@ -55,7 +55,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
       publisher.publish(JsonError(JObject(), "Error"))
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
   }

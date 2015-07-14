@@ -20,7 +20,7 @@ trait Publisher extends Logging {
 
     def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
 
-    def error(t: Throwable) = promise failure new RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
+    def error(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
 
     validate(json) match {
       case Good(j) => publish(j, queue, ack, nack, error)
@@ -37,7 +37,7 @@ trait Publisher extends Logging {
 
     def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
 
-    def error(t: Throwable) = promise failure new RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+    def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
 
     val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
 

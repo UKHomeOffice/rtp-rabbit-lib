@@ -48,7 +48,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString("unknown"), mock[Channel]), self)
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
 
@@ -79,7 +79,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("error" -> "json"))), mock[Channel]), self)
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
 
@@ -96,7 +96,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("valid" -> "json"))), mock[Channel]), self)
 
       jsonErrorPromise.future must beLike[JsonError] {
-        case JsonError(_, error, _, _) => ok
+        case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
   }

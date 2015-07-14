@@ -41,16 +41,24 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
   // TODO This function needs another iteration as I'm not happy with this first attempt of the implementation!!!
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Any = {
     val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
-      case b @ Bad(e @ JsonError(_, _, _, fatalException)) =>
-        if (fatalException) {
-          log.error(s"NACKing fatal exception while processing: $e")
-          rabbitMessage.nack()
-        } else {
-          log.error(s"BAD processing: $e")
-          publish(e)
-          rabbitMessage.ack()
-        }
+      case b @ Bad(e @ JsonError(_, _, Some(AlertException(t)))) =>
+        log.error(s"BAD processing: $e")
+        publish(e)
+        rabbitMessage.ack()
+        // TODO Put on alert queue and not on error queue
+        sender ! KO
+        b
 
+      case b @ Bad(e @ JsonError(_, _, Some(RetryException(t)))) =>
+        log.error(s"NACKing exception while processing: $e")
+        rabbitMessage.nack()
+        sender ! KO
+        b
+
+      case b @ Bad(e @ JsonError(_, _, _)) =>
+        log.error(s"BAD processing: $e")
+        publish(e)
+        rabbitMessage.ack()
         sender ! KO
         b
     }
