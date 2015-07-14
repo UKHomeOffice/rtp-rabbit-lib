@@ -12,7 +12,7 @@ import com.rabbitmq.client._
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 
-trait ConsumerActor extends Actor with ActorLogging with Publisher {
+trait ConsumerActor extends Actor with ActorLogging with Publisher with Alerter {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
@@ -43,9 +43,8 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
     val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
       case b @ Bad(e @ JsonError(_, _, Some(AlertThrowable(t)))) =>
         log.error(s"BAD processing: $e")
-        publish(e)
+        alert(e)
         rabbitMessage.ack()
-        // TODO Put on alert queue and not on error queue
         sender ! KO
         b
 
