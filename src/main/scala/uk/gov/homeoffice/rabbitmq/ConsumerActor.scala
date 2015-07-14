@@ -1,17 +1,16 @@
 package uk.gov.homeoffice.rabbitmq
 
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.Try
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.event.LoggingReceive
 import akka.util.ByteString
-import com.rabbitmq.client._
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
+import com.rabbitmq.client._
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.Try
 
 trait ConsumerActor extends Actor with ActorLogging with Publisher {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
