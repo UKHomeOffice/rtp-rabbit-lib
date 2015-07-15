@@ -98,8 +98,8 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
     "consume valid message" in {
       val validMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with WithConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = validMessageConsumed success true
+      val publisher = new Publisher with WithQueue.Consumer with WithRabbit {
+        def json(json: JValue) = validMessageConsumed success true
       }
 
       publisher.publish(JObject())
@@ -110,10 +110,8 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
     "consume error message" in {
       val errorMessageConsumed = Promise[Boolean]()
 
-      val publisher = new Publisher with WithConsumer with WithErrorConsumer with WithQueue with WithRabbit {
-        def consume(body: Array[Byte]) = ko
-
-        def consumeError(body: Array[Byte]) = errorMessageConsumed success true
+      val publisher = new Publisher with WithQueue.ErrorConsumer with WithRabbit {
+        def jsonError(jsonError: JsonError) = errorMessageConsumed success true
       }
 
       publisher.publish(JsonError(JObject(), "Error"))
