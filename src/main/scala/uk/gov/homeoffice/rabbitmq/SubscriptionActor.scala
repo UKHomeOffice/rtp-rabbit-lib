@@ -12,7 +12,7 @@ import com.rabbitmq.client._
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 
-trait ConsumerActor extends Actor with ActorLogging with Publisher {
+trait SubscriptionActor extends Actor with ActorLogging with Publisher {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
@@ -41,23 +41,22 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
   // TODO This function needs another iteration as I'm not happy with this first attempt of the implementation!!!
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Any = {
     val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
-      case b @ Bad(e @ JsonError(_, _, Some(AlertThrowable(t)))) =>
-        log.error(s"BAD processing: $e")
-        alert(e)
-        rabbitMessage.ack()
-        sender ! KO
-        b
+      case b @ Bad(jsonError: JsonError) => jsonError match {
+        case e @ JsonError(_, _, Some(AlertThrowable(t))) =>
+          log.error(s"ALERT BAD processing: $e")
+          alert(e)
+          rabbitMessage.ack()
 
-      case b @ Bad(e @ JsonError(_, _, Some(RetryThrowable(t)))) =>
-        log.error(s"NACKing exception while processing: $e")
-        rabbitMessage.nack()
-        sender ! KO
-        b
+        case e @ JsonError(_, _, Some(RetryThrowable(t))) =>
+          log.error(s"Prepare for retry - NACKing exception while processing: $e")
+          rabbitMessage.nack()
 
-      case b @ Bad(e @ JsonError(_, _, _)) =>
-        log.error(s"BAD processing: $e")
-        publish(e)
-        rabbitMessage.ack()
+        case e: JsonError =>
+          log.error(s"Publishing to error queue because of BAD processing: $e")
+          publish(e)
+          rabbitMessage.ack()
+        }
+
         sender ! KO
         b
     }
