@@ -12,7 +12,7 @@ import com.rabbitmq.client._
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 
-trait SubscriptionActor extends Actor with ActorLogging with Publisher {
+trait ConsumerActor extends Actor with ActorLogging with Publisher {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()

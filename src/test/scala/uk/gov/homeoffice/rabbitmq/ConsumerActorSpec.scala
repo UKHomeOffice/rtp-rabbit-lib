@@ -15,7 +15,7 @@ import com.rabbitmq.client.Channel
 import uk.gov.homeoffice.akka.ActorSystemContext
 import uk.gov.homeoffice.json.{JsonError, JsonSchema}
 
-class SubscriptionActorSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification with Mockito {
+class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification with Mockito {
   trait JsonValidator extends uk.gov.homeoffice.json.JsonValidator {
     override val jsonSchema = JsonSchema(parse("""
     {
@@ -34,12 +34,12 @@ class SubscriptionActorSpec(implicit ev: ExecutionEnv) extends Specification wit
     }"""))
   }
 
-  "Subscription Actor" should {
+  "Consumer Actor" should {
     "consume a message that is not JSON and republish it onto an associated error queue" in new ActorSystemContext {
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new SubscriptionActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -55,7 +55,7 @@ class SubscriptionActorSpec(implicit ev: ExecutionEnv) extends Specification wit
     "consume valid JSON and delegate to a consumer" in new ActorSystemContext {
       val jsonPromise = Promise[JValue]()
 
-      val actor = TestActorRef(new SubscriptionActor with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
+      val actor = TestActorRef(new ConsumerActor with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
         def consume(json: JValue) = (jsonPromise success json).future.map(Good(_))
       })
 
@@ -70,7 +70,7 @@ class SubscriptionActorSpec(implicit ev: ExecutionEnv) extends Specification wit
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new SubscriptionActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -87,7 +87,7 @@ class SubscriptionActorSpec(implicit ev: ExecutionEnv) extends Specification wit
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new SubscriptionActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           override def consume(json: JValue) = Future.successful(Bad(JsonError(error = "")))
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
