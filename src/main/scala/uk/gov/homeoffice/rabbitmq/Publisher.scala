@@ -38,7 +38,7 @@ trait Publisher extends Logging {
    publish(e, alertQueue)
  }
 
- private def publish(e: JsonError, queue:  Channel => String): Future[JsonError] = {
+ private def publish(e: JsonError, queue: Channel => String): Future[JsonError] = {
    val promise = Promise[JsonError]()
 
    def ack = promise success e
@@ -49,12 +49,10 @@ trait Publisher extends Logging {
 
    val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
 
-   info(s"Publishing to error queue $errorQueueName ${pretty(render(jsonWithError))}")
    publish(jsonWithError, queue, ack, nack, error)
 
    promise.future
  }
-
 
  private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, err: Throwable => Any) = Future {
    try {
