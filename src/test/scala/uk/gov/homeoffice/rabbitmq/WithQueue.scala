@@ -12,13 +12,18 @@ import uk.gov.homeoffice.json.{JsonFormats, JsonError}
  * However, this seems to be a naming idiom (certainly from Play) to distinguish this trait that is only for testing as opposed to say main code named "Queue"
  */
 trait WithQueue extends Queue with JsonFormats {
-  override val queueName: String = UUID.randomUUID().toString
+  override val queueName = UUID.randomUUID().toString
+
+  override val alertQueueName = s"$queueName-alert"
 
   override def queue(channel: Channel): String =
     channel.queueDeclare(queueName, /*durable*/ false, /*exclusive*/ true, /*autoDelete*/ true, /*arguments*/ Map("passive" -> "false")).getQueue
 
   override def errorQueue(channel: Channel): String =
     channel.queueDeclare(errorQueueName, /*durable*/ false, /*exclusive*/ true, /*autoDelete*/ true, /*arguments*/ Map("passive" -> "false")).getQueue
+
+  override def alertQueue(channel: Channel): String =
+    channel.queueDeclare(alertQueueName, /*durable*/ false, /*exclusive*/ true, /*autoDelete*/ true, /*arguments*/ Map("passive" -> "false")).getQueue
 }
 
 object WithQueue {

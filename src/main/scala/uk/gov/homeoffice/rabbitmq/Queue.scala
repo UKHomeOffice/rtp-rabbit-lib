@@ -8,6 +8,8 @@ trait Queue {
 
   lazy val errorQueueName: String = s"$queueName-error"
 
+  val alertQueueName = "alert"
+
   /**
    * x-ha-policy tells RabbitMQ to make this a queue that is mirrored across all nodes
    */
@@ -16,4 +18,7 @@ trait Queue {
 
   def errorQueue(channel: Channel): String =
     channel.queueDeclare(errorQueueName, /*durable*/true, /*exclusive*/false, /*autoDelete*/false, /*arguments*/Map("x-ha-policy" -> "all")).getQueue
+
+  def alertQueue(channel: Channel): String =
+    channel.queueDeclare(alertQueueName, /*durable*/true, /*exclusive*/false, /*autoDelete*/false, /*arguments*/Map("x-ha-policy" -> "all")).getQueue
 }

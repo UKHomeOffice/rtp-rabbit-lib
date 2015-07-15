@@ -47,6 +47,23 @@ trait Publisher extends Logging {
     promise.future
   }
 
+  def alert(e: JsonError) = Future {
+    val promise = Promise[JsonError]()
+
+    def ack = promise success e
+
+    def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
+
+    def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+
+    val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
+
+    info(s"Publishing to alert queue $alertQueueName ${pretty(render(jsonWithError))}")
+    publish(jsonWithError, alertQueue, ack, nack, error)
+
+    promise.future
+  }
+
   private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, err: Throwable => Any) = Future {
     try {
       val channel = connection.createChannel()
