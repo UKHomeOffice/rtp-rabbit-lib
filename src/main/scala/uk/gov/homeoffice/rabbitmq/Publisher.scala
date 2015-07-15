@@ -20,10 +20,10 @@ trait Publisher extends Logging {
 
    def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
 
-   def error(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
+   def onError(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
 
    validate(json) match {
-     case Good(j) => publish(j, queue, ack, nack, error)
+     case Good(j) => publish(j, queue, ack, nack, onError)
      case Bad(e) => publishError(e).map(promise success Bad(_))
    }
 
@@ -38,23 +38,23 @@ trait Publisher extends Logging {
    publish(e, alertQueue)
  }
 
- private def publish(e: JsonError, queue: Channel => String): Future[JsonError] = {
+ private[rabbitmq] def publish(e: JsonError, queue: Channel => String): Future[JsonError] = {
    val promise = Promise[JsonError]()
 
    def ack = promise success e
 
    def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
 
-   def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+   def onError(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
 
    val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
 
-   publish(jsonWithError, queue, ack, nack, error)
+   publish(jsonWithError, queue, ack, nack, onError)
 
    promise.future
  }
 
- private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, err: Throwable => Any) = Future {
+ private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, onError: Throwable => Any) = Future {
    try {
      val channel = connection.createChannel()
      channel.confirmSelect()
@@ -69,8 +69,8 @@ trait Publisher extends Logging {
      channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, compact(render(json)).getBytes)
    } catch {
      case t: Throwable =>
-       logger.error(t)
-       err(t)
+       error(t)
+       onError(t)
    }
  }
 }
