@@ -44,7 +44,7 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
       case b @ Bad(jsonError: JsonError) => jsonError match {
         case e @ JsonError(_, _, Some(AlertThrowable(t))) =>
           log.error(s"ALERT BAD processing: $e")
-          alert(e)
+          publishAlert(e)
           rabbitMessage.ack()
 
         case e @ JsonError(_, _, Some(RetryThrowable(t))) =>
@@ -53,7 +53,7 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
 
         case e: JsonError =>
           log.error(s"Publishing to error queue because of BAD processing: $e")
-          publish(e)
+          publishError(e)
           rabbitMessage.ack()
         }
 

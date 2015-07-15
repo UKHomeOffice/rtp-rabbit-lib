@@ -11,76 +11,68 @@ import grizzled.slf4j.Logging
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 
 trait Publisher extends Logging {
-  this: JsonValidator with Queue with Rabbit =>
+ this: JsonValidator with Queue with Rabbit =>
 
-  def publish(json: JValue): Future[JValue Or JsonError] = {
-    val promise = Promise[JValue Or JsonError]()
+ def publish(json: JValue): Future[JValue Or JsonError] = {
+   val promise = Promise[JValue Or JsonError]()
 
-    def ack = promise success Good(json)
+   def ack = promise success Good(json)
 
-    def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
+   def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
 
-    def error(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
+   def error(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
 
-    validate(json) match {
-      case Good(j) => publish(j, queue, ack, nack, error)
-      case Bad(e) => publish(e).map(promise success Bad(_))
-    }
+   validate(json) match {
+     case Good(j) => publish(j, queue, ack, nack, error)
+     case Bad(e) => publishError(e).map(promise success Bad(_))
+   }
 
-    promise.future
-  }
+   promise.future
+ }
 
-  def publish(e: JsonError): Future[JsonError] = {
-    val promise = Promise[JsonError]()
+ def publishError(e: JsonError): Future[JsonError] = {
+   publish(e, errorQueue)
+ }
 
-    def ack = promise success e
+ def publishAlert(e: JsonError) = Future {
+   publish(e, alertQueue)
+ }
 
-    def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
+ private def publish(e: JsonError, queue:  Channel => String): Future[JsonError] = {
+   val promise = Promise[JsonError]()
 
-    def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+   def ack = promise success e
 
-    val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
+   def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
 
-    info(s"Publishing to error queue $errorQueueName ${pretty(render(jsonWithError))}")
-    publish(jsonWithError, errorQueue, ack, nack, error)
+   def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
 
-    promise.future
-  }
+   val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
 
-  def alert(e: JsonError) = Future {
-    val promise = Promise[JsonError]()
+   info(s"Publishing to error queue $errorQueueName ${pretty(render(jsonWithError))}")
+   publish(jsonWithError, queue, ack, nack, error)
 
-    def ack = promise success e
+   promise.future
+ }
 
-    def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
 
-    def error(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+ private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, err: Throwable => Any) = Future {
+   try {
+     val channel = connection.createChannel()
+     channel.confirmSelect()
 
-    val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
+     channel.addConfirmListener(new ConfirmListener {
+       def handleAck(deliveryTag: Long, multiple: Boolean) = ack
 
-    info(s"Publishing to alert queue $alertQueueName ${pretty(render(jsonWithError))}")
-    publish(jsonWithError, alertQueue, ack, nack, error)
+       def handleNack(deliveryTag: Long, multiple: Boolean) = nack
+     })
 
-    promise.future
-  }
-
-  private[rabbitmq] def publish(json: JValue, queue: Channel => String, ack: => Any, nack: => Any, err: Throwable => Any) = Future {
-    try {
-      val channel = connection.createChannel()
-      channel.confirmSelect()
-
-      channel.addConfirmListener(new ConfirmListener {
-        def handleAck(deliveryTag: Long, multiple: Boolean) = ack
-
-        def handleNack(deliveryTag: Long, multiple: Boolean) = nack
-      })
-
-      info(s"Publishing to $connection:${queue(channel)} ${pretty(render(json))}")
-      channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, compact(render(json)).getBytes)
-    } catch {
-      case t: Throwable =>
-        logger.error(t)
-        err(t)
-    }
-  }
+     info(s"Publishing to $connection:${queue(channel)} ${pretty(render(json))}")
+     channel.basicPublish("", queue(channel), MessageProperties.PERSISTENT_BASIC, compact(render(json)).getBytes)
+   } catch {
+     case t: Throwable =>
+       logger.error(t)
+       err(t)
+   }
+ }
 }
