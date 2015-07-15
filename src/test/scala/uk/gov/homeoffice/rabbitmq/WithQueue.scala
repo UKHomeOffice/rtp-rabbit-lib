@@ -64,4 +64,25 @@ object WithQueue {
 
     def jsonError(jsonError: JsonError): Any
   }
+
+  trait AlertConsumer extends WithQueue {
+    override def alertQueue(channel: Channel): String = {
+      val consumer = new DefaultConsumer(channel) {
+        override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
+          super.handleDelivery(consumerTag, envelope, properties, body)
+
+          alertError {
+            val extractedJsonError = parse(new String(body))
+            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extract[String])
+          }
+        }
+      }
+
+      channel.basicConsume(super.alertQueue(channel), true, consumer)
+
+      alertQueueName
+    }
+
+    def alertError(jsonError: JsonError): Any
+  }
 }
