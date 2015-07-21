@@ -28,7 +28,7 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
   }
 
   val retryStrategy = new RetryStrategy(delay = config.duration("akka.consumers.retry.delay", default = 10 seconds),
-                                        maximumNumberOfRetries = config.int("akka.consumers.retry.maximumNumberOfRetries", default = 10))
+                                        maximumNumberOfRetries = config.int("akka.consumers.retry.maximum-number-of-retries", default = 10))
 
   override def preStart() = {
     super.preStart()
