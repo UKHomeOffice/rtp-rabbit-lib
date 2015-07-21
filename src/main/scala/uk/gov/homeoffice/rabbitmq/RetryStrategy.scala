@@ -3,7 +3,8 @@ package uk.gov.homeoffice.rabbitmq
 import scala.concurrent.duration._
 
 class RetryStrategy(var numberOfRetries: Int = 0, var delay: Duration = 10 seconds,
-                    incrementStrategy: Duration => Duration = d => d * 2, exceededMaximumRetriesCallback: => Any = ()) {
+                    incrementStrategy: Duration => Duration = d => d * 2,
+                    exceededMaximumRetriesCallback: => Any = ()) {
   import RetryStrategy._
 
   val maximumNumberOfRetries = 10

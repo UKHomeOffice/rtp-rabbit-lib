@@ -34,5 +34,6 @@ object Rabbit extends HasConfig {
 
     automatic-recovery = on
 
-    timeout = 10000 milliseconds""")
+    timeout = 10000 milliseconds
+  """)
 }
