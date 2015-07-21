@@ -10,6 +10,7 @@ import org.specs2.mutable.Specification
 import uk.gov.homeoffice.akka.ActorSystemContext
 import uk.gov.homeoffice.concurrent.CountDownLatch
 import uk.gov.homeoffice.json.{JsonError, NoJsonValidator}
+import uk.gov.homeoffice.rabbitmq.RetryStrategy.ExceededMaximumRetries
 
 class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification {
   "Consumer Actor" should {
@@ -18,9 +19,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
       TestActorRef {
         new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
-          override val retryStrategy = new RetryStrategy(delay = 1 second, incrementStrategy = _ => 1 second) {
-            override val maximumNumberOfRetries = 3
-          }
+          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = 3, incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
             retries countDown()
@@ -39,10 +38,12 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
       val actor = TestActorRef {
         new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
-          override val retryStrategy = new RetryStrategy(delay = 1 second,
-                                                         incrementStrategy = _ => 1 second,
-                                                         exceededMaximumRetriesCallback = exceededMaximumNumberOfRetries success true) {
-            override val maximumNumberOfRetries = 3
+          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = 3, incrementStrategy = _ => 1 second) {
+            override def increment = {
+              val incrementResult = super.increment
+              if (incrementResult == ExceededMaximumRetries) exceededMaximumNumberOfRetries success true
+              incrementResult
+            }
           }
 
           override def consume(json: JValue) = Future.successful {
