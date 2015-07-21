@@ -1,6 +1,7 @@
 package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 import scala.util.Try
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.event.LoggingReceive
@@ -11,77 +12,103 @@ import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
+import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
 
 trait ConsumerActor extends Actor with ActorLogging with Publisher {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
 
+  lazy val consumer = new DefaultConsumer(channel) {
+    override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) =
+      self ! new RabbitMessage(envelope.getDeliveryTag, ByteString(body), channel)
+  }
+
+  val retryStrategy = new RetryStrategy()
+
   override def preStart() = {
     super.preStart()
-
-    val consumer = new DefaultConsumer(channel) {
-      override def handleDelivery(consumerTag: String, envelope: Envelope, properties: AMQP.BasicProperties, body: Array[Byte]) = {
-        self ! new RabbitMessage(envelope.getDeliveryTag, ByteString(body), channel)
-      }
-    }
-
     channel.basicConsume(queue(channel), false, consumer)
   }
 
   override def receive = LoggingReceive {
-    case m: RabbitMessage => consume(m, sender())
+    case m: RabbitMessage =>
+      retryStrategy.reset()
+      consume(m, sender())
+  }
+
+  def retry = LoggingReceive {
+    case m: RabbitMessage =>
+      retryStrategy.increment match {
+        case Ok =>
+          Thread.sleep(retryStrategy.delay.toMillis)
+          consume(m, sender())
+
+        case ExceededMaximumRetries =>
+          // TODO STOP
+          println("===> Stopping Actor because retries have been exceeded")
+          context.stop(self)
+      }
   }
 
   override def postStop() = {
     super.postStop()
+    try channel.basicCancel(consumer.getConsumerTag) catch { case t: Throwable => log.error(t.getMessage) }
     try channel.close() catch { case t: Throwable => log.error(t.getMessage) }
   }
 
-  // TODO This function needs another iteration as I'm not happy with this first attempt of the implementation!!!
-  private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Any = {
-    val jsonError: PartialFunction[_ Or JsonError, _ Or JsonError] = {
-      case b @ Bad(jsonError: JsonError) => jsonError match {
+  private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
+    def good() = {
+      log.debug("GOOD processing")
+      context.become(receive)
+      rabbitMessage.ack()
+      sender ! OK
+    }
+
+    def bad(jsonError: JsonError) = {
+      jsonError match {
         case e @ JsonError(_, _, Some(AlertThrowable(t))) =>
           log.error(s"ALERT BAD processing: $e")
           publishAlert(e)
+          context.become(receive)
           rabbitMessage.ack()
 
         case e @ JsonError(_, _, Some(RetryThrowable(t))) =>
           log.error(s"Prepare for retry - NACKing exception while processing: $e")
+          context.become(retry)
           rabbitMessage.nack()
 
         case e: JsonError =>
           log.error(s"Publishing to error queue because of BAD processing: $e")
           publishError(e)
+          context.become(receive)
           rabbitMessage.ack()
-        }
+      }
 
-        sender ! KO
-        b
+      sender ! KO
     }
 
-    val validateJson: PartialFunction[JValue Or JsonError, JValue Or JsonError] = {
-      case Good(json) => validate(json)
-    }
+    val result = for {
+      json <- parseBody(rabbitMessage.body.utf8String)
+      validJson <- validate(json)
+    } yield validJson
 
-    val consumeJson: PartialFunction[JValue Or JsonError, Unit] = {
+    result match {
       case Good(json) =>
         consume(json).collect {
-          case Good(_) =>
-            log.debug("GOOD processing")
-            rabbitMessage.ack()
-            sender ! OK
+          case g @ Good(_) =>
+            good()
+            g
 
-          case b @ Bad(_) =>
-            jsonError(b)
+          case b @ Bad(jsonError) =>
+            bad(jsonError)
+            b
         }
 
-      case b @ Bad(_) =>
-        jsonError(b)
+      case b @ Bad(jsonError: JsonError) =>
+        bad(jsonError)
+        Future.successful(b)
     }
-
-    (jsonError orElse (validateJson andThen consumeJson))(parseBody(rabbitMessage.body.utf8String))
   }
 
   private[rabbitmq] def parseBody(body: String): JValue Or JsonError = Try {

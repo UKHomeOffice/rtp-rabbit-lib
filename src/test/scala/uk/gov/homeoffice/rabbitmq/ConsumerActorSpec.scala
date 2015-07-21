@@ -99,5 +99,23 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
         case JsonError(_, error, _) => ok
       }.awaitFor(10 seconds)
     }
+
+    "fail to consume valid JSON because of a severe issue and republish it to alert queue" in new ActorSystemContext {
+      val jsonErrorPromise = Promise[JsonError]()
+
+      val actor = TestActorRef {
+        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
+          override def consume(json: JValue) = Future.successful { Bad(JsonError(error = "", throwable = Some(AlertThrowable(new Exception)))) }
+
+          def alertError(jsonError: JsonError) = jsonErrorPromise success jsonError
+        }
+      }
+
+      actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("valid" -> "json"))), mock[Channel]), self)
+
+      jsonErrorPromise.future must beLike[JsonError] {
+        case JsonError(_, error, _) => ok
+      }.awaitFor(3 seconds)
+    }
   }
 }
