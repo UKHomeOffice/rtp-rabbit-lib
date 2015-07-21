@@ -26,7 +26,8 @@ object Rabbit extends HasConfig {
     factory.newConnection(amqpConfig.getConfigList("addresses").map(address).toArray)
   }
 
-  private def amqpDefaultConfig = ConfigFactory.parseString("""
+  private def amqpDefaultConfig = ConfigFactory parseString
+  """
     addresses = [{
       host = "127.0.0.1"
       port = 5672
@@ -35,5 +36,5 @@ object Rabbit extends HasConfig {
     automatic-recovery = on
 
     timeout = 10000 milliseconds
-  """)
+  """
 }
