@@ -58,14 +58,14 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
   }
 
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
-    def good() = {
+    def goodConsume() = {
       log.debug("GOOD processing")
       context.become(receive)
       rabbitMessage.ack()
       sender ! OK
     }
 
-    def bad(jsonError: JsonError) = {
+    def badConsume(jsonError: JsonError) = {
       jsonError match {
         case e @ JsonError(_, _, Some(AlertThrowable(t))) =>
           log.error(s"ALERT BAD processing: $e")
@@ -97,16 +97,16 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
       case Good(json) =>
         consume(json).collect {
           case g @ Good(_) =>
-            good()
+            goodConsume()
             g
 
           case b @ Bad(jsonError) =>
-            bad(jsonError)
+            badConsume(jsonError)
             b
         }
 
       case b @ Bad(jsonError: JsonError) =>
-        bad(jsonError)
+        badConsume(jsonError)
         Future.successful(b)
     }
   }
