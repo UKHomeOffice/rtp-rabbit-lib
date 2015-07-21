@@ -2,6 +2,7 @@ package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.concurrent.duration._
 import scala.util.Try
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.event.LoggingReceive
@@ -10,11 +11,13 @@ import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
+import uk.gov.homeoffice.akka.ActorHasConfig
+import uk.gov.homeoffice.configuration.ConfigFactorySupport
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
 
-trait ConsumerActor extends Actor with ActorLogging with Publisher {
+trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with ConfigFactorySupport with Publisher {
   this: Consumer[_] with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
@@ -24,7 +27,8 @@ trait ConsumerActor extends Actor with ActorLogging with Publisher {
       self ! new RabbitMessage(envelope.getDeliveryTag, ByteString(body), channel)
   }
 
-  val retryStrategy = new RetryStrategy()
+  val retryStrategy = new RetryStrategy(delay = config.duration("akka.consumers.retry.delay", default = 10 seconds),
+                                        maximumNumberOfRetries = config.int("akka.consumers.retry.maximumNumberOfRetries", default = 10))
 
   override def preStart() = {
     super.preStart()
