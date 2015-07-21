@@ -2,21 +2,21 @@ package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.duration._
 
-class RetryStrategy(var count: Int = 0, var delay: Duration = 10 seconds,
+class RetryStrategy(var numberOfRetries: Int = 0, var delay: Duration = 10 seconds,
                     incrementStrategy: Duration => Duration = d => d * 2, exceededMaximumRetriesCallback: => Any = ()) {
   import RetryStrategy._
 
-  val maximumNumberOfRetries = 5
+  val maximumNumberOfRetries = 10
 
   val originalDelay = delay
 
   def reset() = {
-    count = 0
+    numberOfRetries = 0
     delay = originalDelay
   }
 
   def increment: Increment = {
-    count = count + 1
+    numberOfRetries = numberOfRetries + 1
     delay = incrementStrategy(delay)
 
     if (exceededMaximumRetries) {
@@ -27,7 +27,7 @@ class RetryStrategy(var count: Int = 0, var delay: Duration = 10 seconds,
     }
   }
 
-  def exceededMaximumRetries: Boolean = count > maximumNumberOfRetries
+  def exceededMaximumRetries: Boolean = numberOfRetries > maximumNumberOfRetries
 }
 
 object RetryStrategy {
