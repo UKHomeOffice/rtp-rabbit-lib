@@ -19,7 +19,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
       TestActorRef {
         new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
-          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = 3, incrementStrategy = _ => 1 second)
+          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
             retries countDown()
@@ -38,7 +38,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
       val actor = TestActorRef {
         new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
-          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = 3, incrementStrategy = _ => 1 second) {
+          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second) {
             override def increment = {
               val incrementResult = super.increment
               if (incrementResult == ExceededMaximumRetries) exceededMaximumNumberOfRetries success true
@@ -67,7 +67,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
       val actor = TestActorRef {
         new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
-          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = 3, incrementStrategy = _ => 1 second)
+          override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
             retried countDown()

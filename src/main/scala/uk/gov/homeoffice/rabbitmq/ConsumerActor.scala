@@ -2,7 +2,6 @@ package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.concurrent.duration._
 import scala.util.Try
 import akka.actor.{Actor, ActorLogging, ActorRef}
 import akka.event.LoggingReceive
@@ -27,8 +26,7 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
       self ! new RabbitMessage(envelope.getDeliveryTag, ByteString(body), channel)
   }
 
-  val retryStrategy = new RetryStrategy(delay = config.duration("akka.consumers.retry.delay", default = 10 seconds),
-                                        maximumNumberOfRetries = config.int("akka.consumers.retry.maximum-number-of-retries", default = 10))
+  val retryStrategy = new RetryStrategy()
 
   override def preStart() = {
     super.preStart()
