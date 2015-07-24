@@ -7,7 +7,7 @@ import org.json4s.JsonAST.{JObject, JString}
 import org.json4s.{DefaultFormats, JValue}
 import org.scalactic.Good
 import grizzled.slf4j.Logging
-import uk.gov.homeoffice.HasConfig
+import uk.gov.homeoffice.configuration.HasConfig
 import uk.gov.homeoffice.json.NoJsonValidator
 
 /**
