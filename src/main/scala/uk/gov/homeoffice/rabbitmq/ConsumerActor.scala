@@ -61,7 +61,7 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
 
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
     def goodConsume() = {
-      log.debug("GOOD processing")
+      log.info("GOOD processing - ACKing")
       context.become(receive)
       rabbitMessage.ack()
       sender ! OK
