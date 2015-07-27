@@ -3,7 +3,7 @@ package uk.gov.homeoffice.rabbitmq
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import akka.actor.{ActorSystem, Props}
-import org.json4s.JsonAST.{JObject, JString}
+import org.json4s.JsonDSL._
 import org.json4s.{DefaultFormats, JValue}
 import org.scalactic.Good
 import grizzled.slf4j.Logging
@@ -30,7 +30,7 @@ object ExampleBoot extends App with HasConfig with Logging {
 
   // Publish
   val publisher = new Publisher with NoJsonValidator with ExampleQueue with Rabbit
-  publisher.publish(JObject("message" -> JString("hello world!")))
+  publisher.publish("message" -> "hello world!")
 }
 
 trait ExampleQueue extends Queue {

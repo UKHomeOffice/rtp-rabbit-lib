@@ -68,7 +68,7 @@ Example Usage
   
     // Publish
     val publisher = new Publisher with ExampleQueue with Rabbit
-    publisher.publish(JObject("message" -> JString("hello world!")))
+    publisher.publish("message" -> "hello world!")
   }
   
   trait ExampleQueue extends Queue {
