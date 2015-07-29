@@ -136,6 +136,9 @@ To run Rabbit (server)
 View Management UI in browser at http://localhost:15672
 and login as guest/guest
 
+Even though this is a Scala library to easy test against and use RabbitMQ, underneath it uses the Java RabbitMQ driver.
+To use Rabbit with other drivers, there is plenty of good documentation at https://www.rabbitmq.com, where the following are a couple of extracts.
+
 Example of connecting to Rabbit to publish to a queue using a Java driver:
 
 https://www.rabbitmq.com/api-guide.html
