@@ -121,3 +121,49 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
   }
 }
 ```
+
+Rabbit MQ
+---------
+Working on a Mac:
+> brew install rabbitmq
+
+To enable the Management UI:
+> rabbitmq-plugins enable rabbitmq_management
+
+To run Rabbit (server)
+> rabbitmq-server
+
+View Management UI in browser at http://localhost:15672
+and login as guest/guest
+
+Example of connecting to Rabbit to publish to a queue using a Java driver:
+
+https://www.rabbitmq.com/api-guide.html
+```java
+ConnectionFactory factory = new ConnectionFactory();
+factory.setUri("amqp://userName:password@hostName:portNumber/virtualHost");
+Connection conn = factory.newConnection();
+
+Channel channel = conn.createChannel();
+
+byte[] messageBodyBytes = "Hello, world!".getBytes();
+channel.basicPublish(exchangeName, routingKey, null, messageBodyBytes);
+```
+
+Example of using Ruby (maybe for Cucumber testing):
+
+https://www.rabbitmq.com/tutorials/tutorial-one-ruby.html
+> gem install bunny --version ">= 1.6.0"
+
+```ruby
+require "bunny"
+
+conn = Bunny.new
+conn.start
+
+ch = conn.create_channel
+
+q = ch.queue("hello")
+ch.default_exchange.publish("Hello World!", :routing_key => q.name)
+puts " [x] Sent 'Hello World!'"
+```
