@@ -18,8 +18,6 @@ Introduction
 ------------
 TODO
 
-Include: installing RabbitMQ
-
 Build and Deploy
 ----------------
 The project is built with SBT (using Activator on top).
