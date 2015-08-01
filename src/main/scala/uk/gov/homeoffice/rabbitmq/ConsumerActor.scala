@@ -43,12 +43,12 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
     case m: RabbitMessage =>
       retryStrategy.increment match {
         case Ok =>
-          Thread.sleep(retryStrategy.delay.toMillis)
-          consume(m, sender())
+          context.system.scheduler.scheduleOnce(retryStrategy.delay) {
+            consume(m, sender())
+          }
 
         case ExceededMaximumRetries =>
-          // TODO STOP
-          println("===> Stopping Actor because retries have been exceeded")
+          warn("Stopping Actor because retries have been exceeded")
           context.stop(self)
       }
   }
