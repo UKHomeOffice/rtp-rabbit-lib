@@ -39,7 +39,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -55,7 +55,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "consume valid JSON and delegate to a consumer" in new ActorSystemContext {
       val jsonPromise = Promise[JValue]()
 
-      val actor = TestActorRef(new ConsumerActor with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
+      val actor = TestActorRef(new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
         def consume(json: JValue) = (jsonPromise success json).future.map(Good(_))
       })
 
@@ -70,7 +70,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -87,8 +87,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          override def consume(json: JValue) = Future.successful(Bad(JsonError(error = "")))
+        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+          override def consume(json: JValue) = Future.successful(Bad(JsonError(json)))
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -104,8 +104,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
-          override def consume(json: JValue) = Future.successful { Bad(JsonError(error = "", throwable = Some(AlertThrowable(new Exception)))) }
+        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
+          override def consume(json: JValue) = Future.successful { Bad(JsonError(json, throwable = Some(new StackOverflowError))) }
 
           def alertError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }

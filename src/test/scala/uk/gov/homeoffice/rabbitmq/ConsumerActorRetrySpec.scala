@@ -1,5 +1,6 @@
 package uk.gov.homeoffice.rabbitmq
 
+import java.io.IOException
 import scala.concurrent.duration._
 import scala.concurrent.{Future, Promise}
 import akka.testkit.{TestActorRef, TestProbe}
@@ -18,12 +19,12 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val retries = CountDownLatch(2)
 
       TestActorRef {
-        new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
             retries countDown()
-            Future.successful { Bad(JsonError(error = "", throwable = Some(RetryThrowable(new Exception)))) }
+            Future.successful { Bad(JsonError(throwable = Some(new IOException))) }
           }
 
           publish(JObject())
@@ -37,7 +38,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val exceededMaximumNumberOfRetries = Promise[Boolean]()
 
       val actor = TestActorRef {
-        new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second) {
             override def increment = {
               val incrementResult = super.increment
@@ -47,7 +48,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
           }
 
           override def consume(json: JValue) = Future.successful {
-            Bad(JsonError(error = "", throwable = Some(RetryThrowable(new Exception))))
+            Bad(JsonError(throwable = Some(new IOException)))
           }
 
           publish(JObject())
@@ -66,7 +67,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val successfulRetry = Promise[Boolean]()
 
       val actor = TestActorRef {
-        new ConsumerActor with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
@@ -76,7 +77,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
               successfulRetry success true
               Future.successful { Good(json) }
             } else {
-              Future.successful { Bad(JsonError(error = "", throwable = Some(RetryThrowable(new Exception)))) }
+              Future.successful { Bad(JsonError(throwable = Some(new IOException))) }
             }
           }
 

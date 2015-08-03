@@ -19,7 +19,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
-      publisher.publishError(JsonError(JObject(), "Error"))
+      publisher.publishError(JsonError())
       publisher.publish(JObject())
 
       jsonPromise.future must beLike[JValue] {
@@ -52,7 +52,7 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
-      publisher.publishError(JsonError(JObject(), "Error"))
+      publisher.publishError(JsonError())
 
       jsonErrorPromise.future must beLike[JsonError] {
         case JsonError(_, error, _) => ok

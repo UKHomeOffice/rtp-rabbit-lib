@@ -56,13 +56,17 @@ Example Usage
     val system = ActorSystem("example-actor-system", config)
   
     // Consume
-    system.actorOf(Props(new ConsumerActor with Consumer[String] with ExampleQueue with Rabbit {
-      def consume(json: JValue) = Future {
-        val message = (json \ "message").extract[String]
-        println(s"Congratulations, consumed message '$message'")
-        Good(message)
+    system.actorOf {
+      Props {
+        new ConsumerActor with Consumer[String] with DefaultErrorPolicy with NoJsonValidator with ExampleQueue with Rabbit {
+          def consume(json: JValue) = Future {
+            val message = (json \ "message").extract[String]
+            debug(s"Congratulations, consumed message '$message'")
+            Good(message)
+          }
+        }
       }
-    }))
+    }
   
     // Publish
     val publisher = new Publisher with ExampleQueue with Rabbit
@@ -112,7 +116,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
         def jsonError(jsonError: JsonError) = errorMessageConsumed success true
       }
 
-      publisher.publish(JsonError(JObject(), "Error"))
+      publisher.publish(JsonError())
 
       errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
     }

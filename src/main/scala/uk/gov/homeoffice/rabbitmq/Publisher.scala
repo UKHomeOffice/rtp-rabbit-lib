@@ -3,7 +3,8 @@ package uk.gov.homeoffice.rabbitmq
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import org.json4s.JValue
-import org.json4s.JsonAST.{JObject, JString}
+import org.json4s.JsonAST.JObject
+import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client.{Channel, ConfirmListener, MessageProperties}
@@ -18,9 +19,9 @@ trait Publisher extends Logging {
 
    def ack = promise success Good(json)
 
-   def nack = promise success Bad(JsonError(json, s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}"))
+   def nack = promise success Bad(JsonError(json, Some(s"Rabbit NACK - Failed to publish JSON ${pretty(render(json))}")))
 
-   def onError(t: Throwable) = promise failure RabbitException(JsonError(json, "Failed to publish JSON", Some(t)))
+   def onError(t: Throwable) = promise failure RabbitException(JsonError(json, Some("Failed to publish JSON"), Some(t)))
 
    validate(json) match {
      case Good(j) => publish(j, queue, ack, nack, onError)
@@ -43,11 +44,15 @@ trait Publisher extends Logging {
 
    def ack = promise success e
 
-   def nack = promise success e.copy(error = s"Rabbit NACK - Failed to publish error JSON: ${e.error}")
+   def nack = promise success e.copy(error = Some(s"Rabbit NACK - Failed to publish error JSON: ${e.error}"))
 
-   def onError(t: Throwable) = promise failure RabbitException(e.copy(error = s"Failed to publish error JSON: ${e.error}"))
+   def onError(t: Throwable) = promise failure RabbitException(e.copy(error = Some(s"Failed to publish error JSON: ${e.error}")))
 
-   val jsonWithError: JValue = e.json merge JObject("error" -> JString(e.error))
+   val jsonWithError: JValue = JObject() merge e.json merge {
+     e.error.fold(JObject()) { error => "error" -> error }
+   } merge {
+     e.throwable.fold(JObject()) { throwable => "error stack trace" -> throwable.getMessage } // TODO
+   }
 
    publish(jsonWithError, queue, ack, nack, onError)
 

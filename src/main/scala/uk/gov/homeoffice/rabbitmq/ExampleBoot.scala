@@ -20,13 +20,17 @@ object ExampleBoot extends App with HasConfig with Logging {
   val system = ActorSystem("rabbit-actor-system", config)
 
   // Consume
-  system.actorOf(Props(new ConsumerActor with Consumer[String] with NoJsonValidator with ExampleQueue with Rabbit {
-    def consume(json: JValue) = Future {
-      val message = (json \ "message").extract[String]
-      debug(s"Congratulations, consumed message '$message'")
-      Good(message)
+  system.actorOf {
+    Props {
+      new ConsumerActor with Consumer[String] with DefaultErrorPolicy with NoJsonValidator with ExampleQueue with Rabbit {
+        def consume(json: JValue) = Future {
+          val message = (json \ "message").extract[String]
+          debug(s"Congratulations, consumed message '$message'")
+          Good(message)
+        }
+      }
     }
-  }))
+  }
 
   // Publish
   val publisher = new Publisher with NoJsonValidator with ExampleQueue with Rabbit

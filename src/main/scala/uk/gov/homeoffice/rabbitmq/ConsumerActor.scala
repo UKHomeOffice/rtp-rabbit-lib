@@ -16,8 +16,18 @@ import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
 
+/**
+ * Mixin a Consumer for this Actor to delegate messages to.
+ * Messages will be consumed by this Actor from a given Rabbit Queue, where a message (bytes) will be converted to JSON (JValue).
+ * The JSON, now representing a Rabbit message, will be ACKed, or NACKed when a Consumer has finished its job, where said job is wrapped in a Future,
+ * so the acking actually takes place when the Future is completed.
+ * To use this Actor (as well as mixing in Rabbit and associated Queue) a JsonValidator and ErrorPolicy must be mixed in:
+ * JsonValidator is used validate the message against a JSON schema, which your JsonValidator should use, but the validation is up to said validator.
+ * ErrorPolicy dicates how errors are handled, specifically how a JsonError is handled.
+ * An error message could be retried according to a RetryStrategy, or placed onto an error or alert queue.
+ */
 trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with ConfigFactorySupport with Publisher {
-  this: Consumer[_] with JsonValidator with Queue with Rabbit =>
+  this: Consumer[_] with ErrorPolicy with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
 
@@ -68,14 +78,14 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
     }
 
     def badConsume(jsonError: JsonError) = {
-      jsonError match {
-        case e @ JsonError(_, _, Some(AlertThrowable(t))) =>
+      enforce(jsonError) match {
+        case e: JsonError with Alert =>
           log.error(s"ALERT BAD processing: $e")
           publishAlert(e)
           context.become(receive)
           rabbitMessage.ack()
 
-        case e @ JsonError(_, _, Some(RetryThrowable(t))) =>
+        case e: JsonError with Retry =>
           log.error(s"Prepare for retry - NACKing exception while processing: $e")
           context.become(retry)
           rabbitMessage.nack()
@@ -115,5 +125,5 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
 
   private[rabbitmq] def parseBody(body: String): JValue Or JsonError = Try {
     new Good(parse(body))
-  } getOrElse new Bad(JsonError(json = JObject("data" -> JString(body)), error = "Invalid JSON format"))
+  } getOrElse new Bad(JsonError(json = JObject("data" -> JString(body)), error = Some("Invalid JSON format")))
 }

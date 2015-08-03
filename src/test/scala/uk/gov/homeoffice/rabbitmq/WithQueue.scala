@@ -52,7 +52,7 @@ object WithQueue {
 
           jsonError {
             val extractedJsonError = parse(new String(body))
-            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extract[String])
+            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extractOpt[String])
           }
         }
       }
@@ -73,7 +73,7 @@ object WithQueue {
 
           alertError {
             val extractedJsonError = parse(new String(body))
-            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extract[String])
+            JsonError(extractedJsonError, error = (extractedJsonError \ "error").extractOpt[String])
           }
         }
       }
