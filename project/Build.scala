@@ -33,11 +33,11 @@ object Build extends Build {
         "ch.qos.logback" % "logback-core" % "1.1.3",
         "ch.qos.logback" % "logback-classic" % "1.1.3",
         "com.typesafe" % "config" % "1.3.0" withSources(),
-        "com.typesafe.akka" %% "akka-actor" % "2.3.9" withSources(),
+        "com.typesafe.akka" %% "akka-actor" % "2.3.12" withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.3" withSources()
       ),
       libraryDependencies ++= Seq(
-        "com.typesafe.akka" %% "akka-testkit" % "2.3.9" % Test withSources()))
+        "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources()))
 
   val testPath = "../rtp-test-lib"
   val ioPath = "../rtp-io-lib"
