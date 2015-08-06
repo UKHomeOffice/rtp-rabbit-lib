@@ -27,6 +27,7 @@ object Build extends Build {
         "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
         "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
         "Kamon Repository" at "http://repo.kamon.io"),
+      mappings in (Test, packageBin) ~= { _.filter(!_._1.getName.endsWith("logback.xml")) },
       libraryDependencies ++= Seq(
         "org.clapper" %% "grizzled-slf4j" % "1.0.2",
         "ch.qos.logback" % "logback-core" % "1.1.3",

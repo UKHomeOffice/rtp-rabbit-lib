@@ -1,20 +1,21 @@
 package uk.gov.homeoffice.rabbitmq
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-import scala.util.Try
-import akka.actor.{Actor, ActorLogging, ActorRef}
+import akka.actor.{Actor, ActorRef}
 import akka.event.LoggingReceive
 import akka.util.ByteString
+import com.rabbitmq.client._
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
-import com.rabbitmq.client._
 import uk.gov.homeoffice.akka.ActorHasConfig
 import uk.gov.homeoffice.configuration.ConfigFactorySupport
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.util.Try
 
 /**
  * Mixin a Consumer for this Actor to delegate messages to.
@@ -26,7 +27,7 @@ import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
  * ErrorPolicy dicates how errors are handled, specifically how a JsonError is handled.
  * An error message could be retried according to a RetryStrategy, or placed onto an error or alert queue.
  */
-trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with ConfigFactorySupport with Publisher {
+trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport with Publisher {
   this: Consumer[_] with ErrorPolicy with JsonValidator with Queue with Rabbit =>
 
   lazy val channel = connection.createChannel()
@@ -65,13 +66,13 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
 
   override def postStop() = {
     super.postStop()
-    try channel.basicCancel(consumer.getConsumerTag) catch { case t: Throwable => log.error(t.getMessage) }
-    try channel.close() catch { case t: Throwable => log.error(t.getMessage) }
+    try channel.basicCancel(consumer.getConsumerTag) catch { case t: Throwable => error(t.getMessage) }
+    try channel.close() catch { case t: Throwable => error(t.getMessage) }
   }
 
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
     def goodConsume() = {
-      log.info("GOOD processing - ACKing")
+      info("GOOD processing - ACKing")
       context.become(receive)
       rabbitMessage.ack()
       sender ! OK
@@ -80,18 +81,18 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
     def badConsume(jsonError: JsonError) = {
       enforce(jsonError) match {
         case e: JsonError with Alert =>
-          log.error(s"ALERT BAD processing: $e")
+          error(s"ALERT BAD processing: $e")
           publishAlert(e)
           context.become(receive)
           rabbitMessage.ack()
 
         case e: JsonError with Retry =>
-          log.error(s"Prepare for retry - NACKing exception while processing: $e")
+          error(s"Prepare for retry - NACKing exception while processing: $e")
           context.become(retry)
           rabbitMessage.nack()
 
         case e: JsonError =>
-          log.error(s"Publishing to error queue because of BAD processing: $e")
+          error(s"Publishing to error queue because of BAD processing: $e")
           publishError(e)
           context.become(receive)
           rabbitMessage.ack()
