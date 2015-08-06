@@ -78,6 +78,8 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
     }
 
     def badConsume(jsonError: JsonError) = {
+      val enforcedJsonError = enforce(jsonError)
+
       enforce(jsonError) match {
         case e: JsonError with Alert =>
           log.error(s"ALERT BAD processing: $e")
@@ -98,28 +100,28 @@ trait ConsumerActor extends Actor with ActorLogging with ActorHasConfig with Con
       }
 
       sender ! KO
+      enforcedJsonError
     }
 
-    val result = for {
+    (for {
       json <- parseBody(rabbitMessage.body.utf8String)
-      validJson <- validate(json)
-    } yield validJson
+      _ = info(s"Consuming JSON: $json")
+      j <- validate(json)
+    } yield j) match {
 
-    result match {
       case Good(json) =>
         consume(json).collect {
           case g @ Good(_) =>
             goodConsume()
             g
 
-          case b @ Bad(jsonError) =>
-            badConsume(jsonError)
-            b
+          case Bad(jsonError) => Bad(badConsume(jsonError))
+        } recover {
+          case t => Bad(badConsume(JsonError(throwable = Some(t))))
         }
 
-      case b @ Bad(jsonError: JsonError) =>
-        badConsume(jsonError)
-        Future.successful(b)
+      case Bad(jsonError: JsonError) =>
+        Future.successful(Bad(badConsume(jsonError)))
     }
   }
 
