@@ -1,21 +1,20 @@
 package uk.gov.homeoffice.rabbitmq
 
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.util.Try
 import akka.actor.{Actor, ActorRef}
 import akka.event.LoggingReceive
 import akka.util.ByteString
-import com.rabbitmq.client._
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
+import com.rabbitmq.client._
 import uk.gov.homeoffice.akka.ActorHasConfig
 import uk.gov.homeoffice.configuration.ConfigFactorySupport
 import uk.gov.homeoffice.json.{JsonError, JsonValidator}
 import uk.gov.homeoffice.rabbitmq.RabbitMessage.{KO, OK}
 import uk.gov.homeoffice.rabbitmq.RetryStrategy.{ExceededMaximumRetries, Ok}
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-import scala.util.Try
 
 /**
  * Mixin a Consumer for this Actor to delegate messages to.
@@ -71,14 +70,15 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
   }
 
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
-    def goodConsume() = {
+    def good[A](a: A) = {
       info("GOOD processing - ACKing")
       context.become(receive)
       rabbitMessage.ack()
       sender ! OK
+      Good(a)
     }
 
-    def badConsume(jsonError: JsonError) = {
+    def bad(jsonError: JsonError) = {
       val enforcedJsonError = enforce(jsonError)
 
       enforce(jsonError) match {
@@ -101,7 +101,7 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
       }
 
       sender ! KO
-      enforcedJsonError
+      Bad(enforcedJsonError)
     }
 
     (for {
@@ -109,20 +109,16 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
       _ = info(s"Consuming JSON: $json")
       j <- validate(json)
     } yield j) match {
-
       case Good(json) =>
         consume(json).collect {
-          case g @ Good(_) =>
-            goodConsume()
-            g
-
-          case Bad(jsonError) => Bad(badConsume(jsonError))
+          case Good(a) => good(a)
+          case Bad(jsonError) => bad(jsonError)
         } recover {
-          case t => Bad(badConsume(JsonError(throwable = Some(t))))
+          case t => bad(JsonError(json, error = Some(t.getMessage), throwable = Some(t)))
         }
 
       case Bad(jsonError: JsonError) =>
-        Future.successful(Bad(badConsume(jsonError)))
+        Future.successful(bad(jsonError))
     }
   }
 
