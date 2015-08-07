@@ -7,7 +7,7 @@ import akka.util.ByteString
 import org.json4s.JValue
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-import org.scalactic.{Bad, Good}
+import org.scalactic.Good
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
@@ -40,7 +40,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       val actor = TestActorRef {
         new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
+          def consume(json: JValue) = ??? // Must not go here
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -71,7 +71,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       val actor = TestActorRef {
         new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          def consume(json: JValue) = throw new Exception("Incorrectly consumed JSON")
+          def consume(json: JValue) = ??? // Must not go here
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -88,7 +88,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       val actor = TestActorRef {
         new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          override def consume(json: JValue) = Future.successful(Bad(JsonError(json)))
+          override def consume(json: JValue) = Future { throw new Exception }
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -101,11 +101,17 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     }
 
     "fail to consume valid JSON because of a severe issue and republish it to alert queue" in new ActorSystemContext {
+      trait SevereErrorPolicy extends ErrorPolicy {
+        val enforce: PartialFunction[JsonError, JsonError with ErrorType] = {
+          case JsonError(json, error, throwable) => new JsonError(json, error, throwable) with Alert
+        }
+      }
+
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
-          override def consume(json: JValue) = Future.successful { Bad(JsonError(json, throwable = Some(new StackOverflowError))) }
+        new ConsumerActor with SevereErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
+          override def consume(json: JValue) = Future { throw new Exception }
 
           def alertError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }

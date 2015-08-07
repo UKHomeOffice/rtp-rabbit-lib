@@ -5,12 +5,12 @@ import scala.concurrent.duration._
 import scala.concurrent.{Future, Promise}
 import akka.testkit.{TestActorRef, TestProbe}
 import org.json4s._
-import org.scalactic.{Good, Bad}
+import org.scalactic.Good
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
 import uk.gov.homeoffice.akka.ActorSystemContext
 import uk.gov.homeoffice.concurrent.CountDownLatch
-import uk.gov.homeoffice.json.{JsonError, NoJsonValidator}
+import uk.gov.homeoffice.json.NoJsonValidator
 import uk.gov.homeoffice.rabbitmq.RetryStrategy.ExceededMaximumRetries
 
 class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification with RabbitSpecification {
@@ -24,7 +24,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
 
           override def consume(json: JValue) = {
             retries countDown()
-            Future.successful { Bad(JsonError(throwable = Some(new IOException))) }
+            Future { throw new IOException }
           }
 
           publish(JObject())
@@ -47,9 +47,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
             }
           }
 
-          override def consume(json: JValue) = Future.successful {
-            Bad(JsonError(throwable = Some(new IOException)))
-          }
+          override def consume(json: JValue) = Future { throw new IOException }
 
           publish(JObject())
         }
@@ -73,11 +71,11 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
           override def consume(json: JValue) = {
             retried countDown()
 
-            if (retried.isZero) {
+            if (retried.isZero) Future.successful {
               successfulRetry success true
-              Future.successful { Good(json) }
-            } else {
-              Future.successful { Bad(JsonError(throwable = Some(new IOException))) }
+              Good(json)
+            } else Future {
+              throw new IOException
             }
           }
 
