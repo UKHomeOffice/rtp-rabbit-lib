@@ -2,16 +2,14 @@ package uk.gov.homeoffice.rabbitmq
 
 import scala.concurrent.Future
 import org.json4s._
-import org.scalactic.Or
-import uk.gov.homeoffice.json.JsonError
-import uk.gov.homeoffice.or.OrOps
 
-trait Consumer[T] extends OrOps {
+trait Consumer[T] {
   /**
    *
-   * @param json JValue to be consumed/processed/transformed
-   * @return a transformation of the given JValue or a JsonError, where "Or" is used for flexibilty to allow for "bad" processing.
-   * Note that throwing an exception within an implementation is taken care of by the fact that a Future (like a Try) has a Success and Failure outcome.
+   * @param json JValue to be consumed/processed/transformed.
+   * @return Result of transformation.
+   * As the contract is a Future, errors can be handled in the wrapped up Failure case (much like a Try),
+   * and as consuming can take a while and use external resources, a Future is the best fit all round.
    */
-  def consume(json: JValue): Future[T Or JsonError]
+  def consume(json: JValue): Future[T]
 }

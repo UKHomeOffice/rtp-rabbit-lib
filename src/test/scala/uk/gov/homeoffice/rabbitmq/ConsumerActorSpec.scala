@@ -7,7 +7,6 @@ import akka.util.ByteString
 import org.json4s.JValue
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-import org.scalactic.Good
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
@@ -39,8 +38,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          def consume(json: JValue) = ??? // Must not go here
+        new ConsumerActor with RabbitErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+          def consume(json: JValue) = ??? // Must not be called
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -55,8 +54,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     "consume valid JSON and delegate to a consumer" in new ActorSystemContext {
       val jsonPromise = Promise[JValue]()
 
-      val actor = TestActorRef(new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
-        def consume(json: JValue) = (jsonPromise success json).future.map(Good(_))
+      val actor = TestActorRef(new ConsumerActor with RabbitErrorPolicy with JsonValidator with Consumer[JValue] with WithQueue with WithRabbit {
+        def consume(json: JValue) = (jsonPromise success json).future
       })
 
       actor.underlyingActor.consume(new RabbitMessage(0, ByteString(compact(render("valid" -> "json"))), mock[Channel]), self)
@@ -70,8 +69,8 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          def consume(json: JValue) = ??? // Must not go here
+        new ConsumerActor with RabbitErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+          def consume(json: JValue) = ??? // Must not be called
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -87,7 +86,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
+        new ConsumerActor with RabbitErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
           override def consume(json: JValue) = Future { throw new Exception }
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
@@ -101,16 +100,16 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
     }
 
     "fail to consume valid JSON because of a severe issue and republish it to alert queue" in new ActorSystemContext {
-      trait SevereErrorPolicy extends ErrorPolicy {
-        val enforce: PartialFunction[JsonError, JsonError with ErrorType] = {
-          case JsonError(json, error, throwable) => new JsonError(json, error, throwable) with Alert
+      trait AlertErrorPolicy extends ErrorPolicy {
+        val enforce: PartialFunction[Throwable, ErrorAction] = {
+          case _ => Alert
         }
       }
 
       val jsonErrorPromise = Promise[JsonError]()
 
       val actor = TestActorRef {
-        new ConsumerActor with SevereErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
+        new ConsumerActor with AlertErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
           override def consume(json: JValue) = Future { throw new Exception }
 
           def alertError(jsonError: JsonError) = jsonErrorPromise success jsonError

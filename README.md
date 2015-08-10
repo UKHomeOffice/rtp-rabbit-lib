@@ -62,7 +62,7 @@ Example Usage
           def consume(json: JValue) = Future {
             val message = (json \ "message").extract[String]
             debug(s"Congratulations, consumed message '$message'")
-            Good(message)
+            message
           }
         }
       }
@@ -106,7 +106,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
 
       publisher.publish(JObject())
 
-      validMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      validMessageConsumed.future must beTrue.await
     }
 
     "consume error message" in {
@@ -118,7 +118,7 @@ class WithConsumerSpec(implicit ev: ExecutionEnv) extends Specification with Rab
 
       publisher.publish(JsonError())
 
-      errorMessageConsumed.future must beTrue.awaitFor(10 seconds)
+      errorMessageConsumed.future must beTrue.await
     }
   }
 }

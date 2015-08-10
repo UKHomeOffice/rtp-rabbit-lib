@@ -5,7 +5,6 @@ import scala.concurrent.Future
 import akka.actor.{ActorSystem, Props}
 import org.json4s.JsonDSL._
 import org.json4s.{DefaultFormats, JValue}
-import org.scalactic.Good
 import grizzled.slf4j.Logging
 import uk.gov.homeoffice.configuration.HasConfig
 import uk.gov.homeoffice.json.NoJsonValidator
@@ -22,11 +21,11 @@ object ExampleBoot extends App with HasConfig with Logging {
   // Consume
   system.actorOf {
     Props {
-      new ConsumerActor with Consumer[String] with DefaultErrorPolicy with NoJsonValidator with ExampleQueue with Rabbit {
+      new ConsumerActor with Consumer[String] with RabbitErrorPolicy with NoJsonValidator with ExampleQueue with Rabbit {
         def consume(json: JValue) = Future {
           val message = (json \ "message").extract[String]
           debug(s"Congratulations, consumed message '$message'")
-          Good(message)
+          message
         }
       }
     }

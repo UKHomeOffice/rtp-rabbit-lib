@@ -1,29 +1,28 @@
 package uk.gov.homeoffice.rabbitmq
 
-import java.io.IOException
-import scala.util.control.NonFatal
-import uk.gov.homeoffice.json.JsonError
-
-// TODO Scaladoc
+/**
+ * Stipulate how a Throwable should be handled by enforcing a particular policy on a Throwable, to be mapped to a required action.
+ */
 trait ErrorPolicy {
-  def enforce: PartialFunction[JsonError, JsonError with ErrorType]
+  def enforce: PartialFunction[Throwable, ErrorAction]
 }
 
-object DefaultErrorPolicy extends DefaultErrorPolicy
+/**
+ * This trait has not been sealed to allow for custom extensions which could then be used in custom error policies
+ */
+trait ErrorAction
 
-trait DefaultErrorPolicy extends ErrorPolicy {
-  val enforce: PartialFunction[JsonError, JsonError with ErrorType] = {
-    case JsonError(json, error, throwable @ Some(t: IOException)) => new JsonError(json, error, throwable) with Retry
-    case JsonError(json, error, throwable @ Some(NonFatal(_))) => new JsonError(json, error, throwable) with Default
-    case JsonError(json, error, None) => new JsonError(json, error, None) with Default
-    case JsonError(json, error, throwable) => new JsonError(json, error, throwable) with Alert
-  }
-}
+/**
+ * Consider this action as the default i.e. the error should be noted (logged etc.) and thrown away.
+ */
+object Reject extends ErrorAction
 
-trait ErrorType
+/**
+ * As with the default case of noting and throwing away an error, the type of error associated with this action should somehow bring the error to attention and not simple log the error.
+ */
+object Alert extends ErrorAction
 
-trait Alert extends ErrorType
-
-trait Retry extends ErrorType
-
-trait Default extends ErrorType
+/**
+ * The error encountered should have the processing, prior to the error, retried.
+ */
+object Retry extends ErrorAction

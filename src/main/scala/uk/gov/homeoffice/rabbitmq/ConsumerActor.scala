@@ -7,7 +7,7 @@ import akka.actor.{Actor, ActorRef}
 import akka.event.LoggingReceive
 import akka.util.ByteString
 import org.json4s._
-import org.json4s.native.JsonMethods._
+import org.json4s.native.JsonMethods.{parse => asJson}
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
 import uk.gov.homeoffice.akka.ActorHasConfig
@@ -70,6 +70,7 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
   }
 
   private[rabbitmq] def consume(rabbitMessage: RabbitMessage, sender: ActorRef): Future[_ Or JsonError] = {
+    /** Message consumption was good */
     def good[A](a: A) = {
       info("GOOD processing - ACKing")
       context.become(receive)
@@ -78,42 +79,38 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
       Good(a)
     }
 
+    /** Message consumption was bad */
     def bad(jsonError: JsonError) = {
-      val enforcedJsonError = enforce(jsonError)
-
-      enforce(jsonError) match {
-        case e: JsonError with Alert =>
-          error(s"ALERT BAD processing: $e")
-          publishAlert(e)
+      jsonError.throwable map enforce getOrElse Reject match {
+        case Alert =>
+          error(s"ALERT BAD processing: $jsonError")
+          publishAlert(jsonError)
           context.become(receive)
           rabbitMessage.ack()
 
-        case e: JsonError with Retry =>
-          error(s"Prepare for retry - NACKing exception while processing: $e")
+        case Retry =>
+          error(s"Prepare for retry - NACKing exception while processing: $jsonError")
           context.become(retry)
           rabbitMessage.nack()
 
-        case e: JsonError =>
-          error(s"Publishing to error queue because of BAD processing: $e")
-          publishError(e)
+        case _ =>
+          error(s"Publishing to error queue because of BAD processing: $jsonError")
+          publishError(jsonError)
           context.become(receive)
           rabbitMessage.ack()
       }
 
       sender ! KO
-      Bad(enforcedJsonError)
+      Bad(jsonError)
     }
 
     (for {
-      json <- parseBody(rabbitMessage.body.utf8String)
+      json <- parse(rabbitMessage.body.utf8String)
       _ = info(s"Consuming JSON: $json")
       j <- validate(json)
     } yield j) match {
       case Good(json) =>
-        consume(json).collect {
-          case Good(a) => good(a)
-          case Bad(jsonError) => bad(jsonError)
-        } recover {
+        consume(json) map good recover {
           case t => bad(JsonError(json, error = Some(t.getMessage), throwable = Some(t)))
         }
 
@@ -122,7 +119,7 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
     }
   }
 
-  private[rabbitmq] def parseBody(body: String): JValue Or JsonError = Try {
-    new Good(parse(body))
-  } getOrElse new Bad(JsonError(json = JObject("data" -> JString(body)), error = Some("Invalid JSON format")))
+  private[rabbitmq] def parse(s: String): JValue Or JsonError = Try {
+    new Good(asJson(s))
+  } getOrElse new Bad(JsonError(json = JObject("data" -> JString(s)), error = Some("Invalid JSON format")))
 }

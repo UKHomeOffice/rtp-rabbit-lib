@@ -5,7 +5,6 @@ import scala.concurrent.duration._
 import scala.concurrent.{Future, Promise}
 import akka.testkit.{TestActorRef, TestProbe}
 import org.json4s._
-import org.scalactic.Good
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
 import uk.gov.homeoffice.akka.ActorSystemContext
@@ -19,7 +18,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val retries = CountDownLatch(2)
 
       TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with RabbitErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
@@ -38,7 +37,7 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val exceededMaximumNumberOfRetries = Promise[Boolean]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with RabbitErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second) {
             override def increment = {
               val incrementResult = super.increment
@@ -65,15 +64,15 @@ class ConsumerActorRetrySpec(implicit ev: ExecutionEnv) extends Specification wi
       val successfulRetry = Promise[Boolean]()
 
       val actor = TestActorRef {
-        new ConsumerActor with DefaultErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
+        new ConsumerActor with RabbitErrorPolicy with NoJsonValidator with Consumer[Any] with Publisher with WithQueue with WithRabbit {
           override val retryStrategy = new RetryStrategy(delay = 1 second, maximumNumberOfRetries = Some(3), incrementStrategy = _ => 1 second)
 
           override def consume(json: JValue) = {
             retried countDown()
 
-            if (retried.isZero) Future.successful {
+            if (retried.isZero) Future {
               successfulRetry success true
-              Good(json)
+              json
             } else Future {
               throw new IOException
             }
