@@ -49,13 +49,12 @@ object Build extends Build {
     println("=====================")
 
     val testLib = ProjectRef(file(testPath), "rtp-test-lib")
-    rabbit.dependsOn(testLib % "test->test;compile->compile")
-
     val ioLib = ProjectRef(file(ioPath), "rtp-io-lib")
-    rabbit.dependsOn(ioLib % "test->test;compile->compile")
-
     val akkaLib = ProjectRef(file(akkaPath), "rtp-akka-lib")
-    rabbit.dependsOn(akkaLib % "test->test;compile->compile")
+
+    rabbit.dependsOn(testLib % "test->test;compile->compile")
+          .dependsOn(ioLib % "test->test;compile->compile")
+          .dependsOn(akkaLib % "test->test;compile->compile")
 
   } else {
     println("========================")
