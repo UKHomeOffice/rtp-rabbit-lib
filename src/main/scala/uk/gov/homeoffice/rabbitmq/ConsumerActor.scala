@@ -110,8 +110,10 @@ trait ConsumerActor extends Actor with ActorHasConfig with ConfigFactorySupport 
       j <- validate(json)
     } yield j) match {
       case Good(json) =>
-        consume(json) map good recover {
+        try consume(json) map good recover {
           case t => bad(JsonError(json, error = Some(t.getMessage), throwable = Some(t)))
+        } catch {
+          case t: Throwable => Future { bad(JsonError(json, error = Some(t.getMessage), throwable = Some(t))) }
         }
 
       case Bad(jsonError: JsonError) =>
