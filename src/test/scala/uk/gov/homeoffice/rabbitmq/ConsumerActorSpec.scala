@@ -1,7 +1,7 @@
 package uk.gov.homeoffice.rabbitmq
 
+import scala.concurrent.Promise
 import scala.concurrent.duration._
-import scala.concurrent.{Future, Promise}
 import akka.testkit.TestActorRef
 import akka.util.ByteString
 import org.json4s.JValue
@@ -87,7 +87,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       val actor = TestActorRef {
         new ConsumerActor with RabbitErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.ErrorConsumer with WithRabbit {
-          override def consume(json: JValue) = Future { throw new Exception }
+          def consume(json: JValue) = throw new Exception
           def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -110,8 +110,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       val actor = TestActorRef {
         new ConsumerActor with AlertErrorPolicy with JsonValidator with Consumer[Any] with WithQueue.AlertConsumer with WithRabbit {
-          override def consume(json: JValue) = Future { throw new Exception }
-
+          def consume(json: JValue) = throw new Exception
           def alertError(jsonError: JsonError) = jsonErrorPromise success jsonError
         }
       }
@@ -120,7 +119,7 @@ class ConsumerActorSpec(implicit ev: ExecutionEnv) extends Specification with Ra
 
       jsonErrorPromise.future must beLike[JsonError] {
         case JsonError(_, error, _) => ok
-      }.awaitFor(3 seconds)
+      }.awaitFor(10 seconds)
     }
   }
 }
