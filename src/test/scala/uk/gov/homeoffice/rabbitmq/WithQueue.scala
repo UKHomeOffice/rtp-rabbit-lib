@@ -3,7 +3,7 @@ package uk.gov.homeoffice.rabbitmq
 import java.util.UUID
 import scala.collection.JavaConversions._
 import org.json4s._
-import org.json4s.native.JsonMethods._
+import org.json4s.jackson.JsonMethods._
 import com.rabbitmq.client.{AMQP, Channel, DefaultConsumer, Envelope}
 import uk.gov.homeoffice.json.{JsonFormats, JsonError}
 

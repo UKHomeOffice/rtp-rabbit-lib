@@ -4,7 +4,7 @@ import scala.concurrent.Promise
 import scala.concurrent.duration._
 import org.json4s.JValue
 import org.json4s.JsonDSL._
-import org.json4s.native.JsonMethods._
+import org.json4s.jackson.JsonMethods._
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mutable.Specification
 import uk.gov.homeoffice.json.{JsonError, JsonSchema, NoJsonValidator}

@@ -7,7 +7,7 @@ import akka.actor.{Actor, ActorRef}
 import akka.event.LoggingReceive
 import akka.util.ByteString
 import org.json4s._
-import org.json4s.native.JsonMethods.{parse => asJson}
+import org.json4s.jackson.JsonMethods.{parse => asJson}
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client._
 import uk.gov.homeoffice.akka.ActorHasConfig

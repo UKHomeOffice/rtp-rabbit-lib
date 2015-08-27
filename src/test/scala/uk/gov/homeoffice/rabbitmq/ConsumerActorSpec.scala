@@ -6,7 +6,7 @@ import akka.testkit.TestActorRef
 import akka.util.ByteString
 import org.json4s.JValue
 import org.json4s.JsonDSL._
-import org.json4s.native.JsonMethods._
+import org.json4s.jackson.JsonMethods._
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification

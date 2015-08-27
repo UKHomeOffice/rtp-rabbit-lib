@@ -4,7 +4,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Future, Promise}
 import org.json4s.JValue
 import org.json4s.JsonAST.JNothing
-import org.json4s.native.JsonMethods._
+import org.json4s.jackson.JsonMethods._
 import org.scalactic.{Bad, Good, Or}
 import com.rabbitmq.client.{Channel, ConfirmListener, MessageProperties}
 import grizzled.slf4j.Logging
