@@ -34,7 +34,7 @@ object Build extends Build {
         "ch.qos.logback" % "logback-classic" % "1.1.3",
         "com.typesafe" % "config" % "1.3.0" withSources(),
         "com.typesafe.akka" %% "akka-actor" % "2.3.12" withSources(),
-        "com.rabbitmq" % "amqp-client" % "3.5.3" withSources()
+        "com.rabbitmq" % "amqp-client" % "3.5.4" withSources()
       ),
       libraryDependencies ++= Seq(
         "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources()))
@@ -43,7 +43,7 @@ object Build extends Build {
   val ioPath = "../rtp-io-lib"
   val akkaPath = "../rtp-akka-lib"
 
-  val root = if (new java.io.File(testPath).exists && sys.props.get("jenkins").isEmpty) {
+  val root = if (file(testPath).exists && sys.props.get("jenkins").isEmpty) {
     println("=====================")
     println("Build Locally domain ")
     println("=====================")
