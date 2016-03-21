@@ -37,38 +37,14 @@ object Build extends Build {
         "com.rabbitmq" % "amqp-client" % "3.5.4" withSources()
       ),
       libraryDependencies ++= Seq(
-        "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources()))
+        "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources()),
 
-  val testPath = "../rtp-test-lib"
-  val ioPath = "../rtp-io-lib"
-  val akkaPath = "../rtp-akka-lib"
-
-  val root = if (file(testPath).exists && sys.props.get("jenkins").isEmpty) {
-    println("=====================")
-    println("Build Locally domain ")
-    println("=====================")
-
-    val testLib = ProjectRef(file(testPath), "rtp-test-lib")
-    val ioLib = ProjectRef(file(ioPath), "rtp-io-lib")
-    val akkaLib = ProjectRef(file(akkaPath), "rtp-akka-lib")
-
-    rabbit.dependsOn(testLib % "test->test;compile->compile")
-          .dependsOn(ioLib % "test->test;compile->compile")
-          .dependsOn(akkaLib % "test->test;compile->compile")
-
-  } else {
-    println("========================")
-    println("Build on Jenkins domain ")
-    println("========================")
-
-    rabbit.settings(
       libraryDependencies ++= Seq(
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" withSources(),
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources(),
-        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" withSources(),
-        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources(),
-        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" withSources(),
-        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources() excludeAll ExclusionRule(organization = "org.specs2")
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.2.2-SNAPSHOT" withSources(),
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.2.2-SNAPSHOT" % Test classifier "tests" withSources(),
+        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.7.2" withSources(),
+        "uk.gov.homeoffice" %% "rtp-io-lib" % "1.7.2" % Test classifier "tests" withSources(),
+        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.6.2" withSources(),
+        "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.6.2" % Test classifier "tests" withSources() excludeAll ExclusionRule(organization = "org.specs2")
       ))
-  }
 }

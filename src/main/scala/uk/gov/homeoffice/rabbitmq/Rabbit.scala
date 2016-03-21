@@ -20,7 +20,7 @@ object Rabbit extends HasConfig {
     val amqpConfig = Try { config.getConfig("amqp") } getOrElse amqpDefaultConfig
 
     val factory = new ConnectionFactory()
-    factory.setAutomaticRecoveryEnabled(amqpConfig.boolean("automatic-recovery", default = true))
+    factory.setAutomaticRecoveryEnabled(amqpConfig.boolean("automatic-recovery", true))
     factory.setConnectionTimeout(amqpConfig.duration("timeout", 10 seconds).toMillis.toInt)
 
     factory.newConnection(amqpConfig.getConfigList("addresses").map(address).toArray)
