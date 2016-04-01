@@ -38,7 +38,6 @@ object Build extends Build {
 
       Seq(
         "com.typesafe" % "config" % "1.3.0" withSources(),
-        "com.typesafe.akka" %% "akka-actor" % `akka-version` withSources(),
         "com.rabbitmq" % "amqp-client" % "3.5.4" withSources(),
         "uk.gov.homeoffice" %% "rtp-test-lib" % `rtp-test-lib-version` withSources(),
         "uk.gov.homeoffice" %% "rtp-io-lib" % `rtp-io-lib-version` withSources(),
