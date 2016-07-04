@@ -14,13 +14,13 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
       val jsonPromise = Promise[JValue]()
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue.Consumer with WithQueue.ErrorConsumer with WithRabbit {
+      val rabbit = new Publisher with NoJsonValidator with WithQueue.Consumer with WithQueue.ErrorConsumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
-      publisher.publishError(JsonError())
-      publisher.publish(JObject())
+      rabbit.publishError(JsonError())
+      rabbit.publish(JObject())
 
       jsonPromise.future must beLike[JValue] {
         case _: JValue => ok
@@ -34,11 +34,11 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
     "consume valid message" in {
       val jsonPromise = Promise[JValue]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue.Consumer with WithRabbit {
+      val rabbit = new Publisher with NoJsonValidator with WithQueue.Consumer with WithRabbit {
         def json(json: JValue) = jsonPromise success json
       }
 
-      publisher.publish(JObject())
+      rabbit.publish(JObject())
 
       jsonPromise.future must beLike[JValue] {
         case j: JValue => ok
@@ -48,11 +48,11 @@ class ConsumerSpec(implicit ev: ExecutionEnv) extends Specification with RabbitS
     "consume error message" in {
       val jsonErrorPromise = Promise[JsonError]()
 
-      val publisher = new Publisher with NoJsonValidator with WithQueue.ErrorConsumer with WithRabbit {
+      val rabbit = new Publisher with NoJsonValidator with WithQueue.ErrorConsumer with WithRabbit {
         def jsonError(jsonError: JsonError) = jsonErrorPromise success jsonError
       }
 
-      publisher.publishError(JsonError())
+      rabbit.publishError(JsonError())
 
       jsonErrorPromise.future must beLike[JsonError] {
         case JsonError(_, error, _) => ok
